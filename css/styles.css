@@ -1,0 +1,106 @@
+/* GENERAL */
+body{
+	font-family: 'Signika Negative', sans-serif;
+	font-size: 1.5em;
+}
+
+
+
+.content ul li{
+	
+	text-transform: uppercase;
+}
+
+#top-menu{
+	min-height:6em;
+	border-bottom: 0.1em solid black;
+	padding:2em;
+	text-transform: uppercase;
+}
+
+i{
+	margin-right: .3em;
+}
+
+#top-menu ul li{
+	margin-right: 2em;
+}
+ul li a{
+	color: #42787A;
+	transition: color 0.5s;
+	-webkit-transition: color 0.5s;
+	transition: border 0.1s;
+	-webkit-transition: border 0.1s;
+}
+#top-menu ul li a:hover{
+	text-decoration: none;
+	border-bottom: 0.2em solid black;
+	color: #331B17;
+}
+.title{
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.logout{
+	margin-top: 0.5em;
+}
+
+.rev-todo{
+	color:white;
+	transform: skewX(20deg);
+	-webkit-transform: skewX(20deg);
+}
+
+#todo h3{
+	background-color: #F0340F;
+	padding:0.3em;
+	transform: skewX(-20deg);
+	-webkit-transform: skewX(-20deg);
+}
+
+#your-courses h3{
+	background-color: #409C97;
+	padding:0.3em;
+	transform: skewX(-20deg);
+	-webkit-transform: skewX(-20deg);
+}
+
+#your-submissions h3{
+	background-color: #331B17;
+	padding:0.3em;
+	transform: skewX(-20deg);
+	-webkit-transform: skewX(-20deg);
+}
+
+.due-date{
+	margin-left: 1em;
+	font-weight: bold;
+	background-color: #F8E8B5;
+	color:#331B17;
+	text-transform: lowercase;
+	padding: 0.1em;
+
+}
+
+#todo ul li, #your-courses ul li{
+	margin-bottom: 1em;
+}
+
+#todo ul li a{
+	color: #F0340F;
+}
+
+#todo ul li a:hover{
+	text-decoration: none;
+	color: #331B17;
+}
+
+#your-courses ul li a{
+	color: #409C97;
+}
+#your-courses ul li a:hover{
+	color: #331B17;
+	text-decoration: none;
+}
+
