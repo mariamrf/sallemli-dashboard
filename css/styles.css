@@ -6,7 +6,7 @@ body{
 
 
 
-.content ul li{
+ul li{
 	
 	text-transform: uppercase;
 }
@@ -41,6 +41,9 @@ ul li a{
 	font-weight: bold;
 	font-size: 1.5em;
 }
+.title a{
+	color: #331B17;
+}
 
 .logout{
 	margin-top: 0.5em;
@@ -52,7 +55,7 @@ ul li a{
 	-webkit-transform: skewX(20deg);
 }
 
-#todo h3{
+#todo h3, #profile-name h1{
 	background-color: #F0340F;
 	padding:0.3em;
 	transform: skewX(-20deg);
@@ -83,7 +86,7 @@ ul li a{
 
 }
 
-#todo ul li, #your-courses ul li{
+#todo ul li, #your-courses ul li, #your-submissions ul li, #profile ul li{
 	margin-bottom: 1em;
 }
 
@@ -91,16 +94,94 @@ ul li a{
 	color: #F0340F;
 }
 
-#todo ul li a:hover{
+#todo ul li a:hover, #your-courses ul li a:hover, #your-submissions ul li a:hover{
 	text-decoration: none;
 	color: #331B17;
+	font-weight: bold;
 }
 
 #your-courses ul li a{
 	color: #409C97;
 }
-#your-courses ul li a:hover{
+
+#your-submissions ul li a{
 	color: #331B17;
-	text-decoration: none;
 }
 
+
+#profile ul li{
+	font-size: 1.2em;
+}
+
+.profile-property{
+	padding:0.3em;
+	transform: skewX(-20deg);
+	-webkit-transform: skewX(-20deg);
+}
+
+.profile-property i{
+	font-size: 0.8em;
+}
+
+.property-value{
+	padding:0.3em;
+	margin-left: 0.5em;
+}
+
+.option{
+	background-color: transparent;
+	border: 0.1em solid #42787A;
+	color: #42787A;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	transition: color 0.5s;
+	-webkit-transition: color 0.5s;
+	transition: border-color 0.5s;
+	-webkit-transition: border-color 0.5s;
+}
+
+.option:hover{
+	border-color: #F0340F;
+	color: #F0340F;
+}
+
+.editable{
+	border-bottom: 0.2em dotted rgba(51, 27, 23, .5);
+}
+.editable i{
+	color: rgba(51, 27, 23, .5);
+}
+
+.editable input{
+	 border: 0px solid #000000;
+    border-bottom-width: 1px;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+#editSchool:hover, #editID:hover, #editEmail:hover, .editable input:hover{
+	background-color: #F8E8B5;
+}
+
+#editSchool, #editID, #editEmail{
+	padding:0.3em;
+}
+
+.modal-btn{
+	width:100%;
+	font-size: 1.2em;
+}
+.modal-header{
+	background-color: #331B17;
+	color:white;
+}
+
+.modal{
+	text-transform: uppercase;
+}
+
+.navmenu-toggle{
+	background-color: transparent;
+	font-size: 1.5em;
+	border:none;
+}

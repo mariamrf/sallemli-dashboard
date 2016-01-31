@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sallemli</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery.qtip.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,600' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+ </head>
+  <body>
+  <nav id="NavMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas hidden-md hidden-lg" role="navigation">
+  <ul class="nav navmenu-nav">
+    <li><a href="index.html">Home</a></li>
+      <li v-for="item in items"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+      <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+  </ul>
+</nav>
+
+  <div class="container-fluid" id="top-menu">
+  <div class="col-md-8">
+    <ul class="list-inline">
+    <li> <button  data-toggle="offcanvas" data-target="#NavMenu" data-canvas="body" class="navmenu-toggle hidden-md hidden-lg">
+    <i class="fa fa-bars"></i>
+  </button></li>
+      <li class="title"><a href="index.html">Sallem.li</a></li>
+      <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+    </ul>
+    </div>
+    <div class="col-md-4 text-right">
+      <ul class="list-inline logout  hidden-xs hidden-sm"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
+    </div>
+  </div>
+  <!--/TOP MENU-->
+  <!--PROFILE-->
+  <div class="container" id="profile">
+  <div class="row">
+  <div class="col-xs-12 col-md-6" id="profile-name">
+    <h1><div class="rev-todo text-center" id="editName">{{name}}</div></h1>
+    <ul class="list-unstyled">
+      <li v-for="property in properties">
+      <div class="row">
+        <div class="col-xs-5 text-center profile-property" v-bind:style="{backgroundColor: property.color}">
+          <div class="rev-todo">
+            <i class="fa {{property.icon}}"></i>
+            {{property.name}}
+          </div>
+        </div>
+        <div class="col-xs-7">
+          <div class="property-value {{property.edit}}"><span id="{{property.method}}">{{property.value}}</span><span v-if="property.editable"><i class="fa fa-pencil"></i></span></div>
+        </div>
+      </div>
+      </li>
+    </ul>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <ul class="list-inline">
+      <li>
+     <button class="option" id="edit-profile" data-toggle="modal" data-target="#changeName"> <i class="fa fa-pencil"></i>Request Name Change</button>
+      </li>
+      <li>
+     <button class="option" data-toggle="modal" data-target="#changePW"> <i class="fa fa-lock"></i>Change Password</button>
+      </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <!--/PROFILE-->
+  <!--MODALS-->
+   <!--CHANGE NAME-->
+     <div class="modal fade" id="changeName" role="dialog" aria-labelledby="changeNameLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="changeNameLabel">Request Name Change</h4>
+        </div>
+        <div class="modal-body">
+        <form class="form">
+            <div class="form-group">
+            <label for="new-name" class="control-label">New Name:</label>
+            <input type="text" class="form-control" id="new-name">
+            </div>
+            <div class="form-group">
+             <label for="reason" class="control-label">Why are you changing it?</label>
+            <select class="form-control" id="reason">
+              <option value="Spelling">Typo/Wrong Spelling</option>
+              <option value"Legal">I've legally changed my name</option>
+              <option value "Other">Other</option>
+            </select>
+            </div>
+            <button type="submit" class="option modal-btn" v-on:click="changeName">Submit Request</button>
+        </form>
+        </div>
+      </div>
+     </div>
+    </div>
+    <!--/CHANGE NAME-->
+     <!--CHANGE PASSWORD-->
+     <div class="modal fade" id="changePW" role="dialog" aria-labelledby="changePWLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="changePWLabel">Change Password</h4>
+        </div>
+        <div class="modal-body">
+        <form class="form">
+            <div class="form-group">
+            <label for="oldpassword" class="control-label">Old:</label>
+            <input type="password" class="form-control" id="oldpassword">
+            </div>
+            <div class="form-group">
+             <label for="newpassword1" class="control-label">New:</label>
+            <input type="password" class="form-control" id="newpassword1">
+            </div>
+            <div class="form-group">
+             <label for="newpassword2" class="control-label">New (again):</label>
+            <input type="password" class="form-control" id="newpassword2">
+            </div>
+
+            <button type="submit" class="option modal-btn" v-on:click="changePassword">Submit</button>
+        </form>
+        </div>
+      </div>
+     </div>
+    </div>
+    <!--/CHANGE PASSWORD-->
+  <!--/MODALS-->
+  <!--SCRIPTS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.qtip.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/jeditable.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/jasny-bootstrap.min.js"></script>
+  <!--/SCRIPTS-->
+  </body>
+</html>

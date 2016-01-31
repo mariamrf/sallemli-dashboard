@@ -11,39 +11,54 @@
     <link href="css/jquery.qtip.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,600' rel='stylesheet' type='text/css'>
     <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
  </head>
   <body>
+<!--OFF CANVAS NAV-->
+  <nav id="NavMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas hidden-md hidden-lg" role="navigation">
+  <ul class="nav navmenu-nav">
+    <li class="active"><a href="index.html">Home</a></li>
+      <li v-for="item in items"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+      <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+  </ul>
+</nav>
+<!--/OFF CANVAS NAV-->
   
   <!--TOP MENU-->
   <div class="container-fluid" id="top-menu">
   <div class="col-md-8">
     <ul class="list-inline">
-      <li class="title">Sallem.li</li>
-      <li v-for="item in items"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+    <li> <button  data-toggle="offcanvas" data-target="#NavMenu" data-canvas="body" class="navmenu-toggle hidden-md hidden-lg">
+    <i class="fa fa-bars"></i>
+  </button></li>
+      <li class="title"><a href="index.html">Sallem.li</a></li>
+      <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
     </ul>
     </div>
     <div class="col-md-4 text-right">
-      <ul class="list-inline logout"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
+      <ul class="list-inline logout hidden-xs hidden-sm"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
     </div>
   </div>
   <!--/TOP MENU-->
   <div class="container content">
-  <div class="col-xs-12 col-md-2" id="todo">
-  <h3><div class="rev-todo text-center">Todo:</div></h3>
-  <ul class="list-unstyled">
-    <li v-for="assignment in assignments"><i class="fa fa-chevron-right"></i><a href="{{assignment.url}}" title="{{assignment.course}}">{{assignment.name}}</a><br><span class="due-date" title="{{assignment.date}}"><i class="fa fa-clock-o"></i>due {{assignment.due}}.</span></li>
-  </ul>
-  </div>
-  <div class="col-xs-12 col-md-6" id="your-courses">
-    <h3><div class="rev-todo text-center">Your Courses:</div></h3>
+  <div class="col-xs-12 col-md-3" id="your-courses">
+  <h3><div class="rev-todo text-center">Your Courses:</div></h3>
     <ul class="list-unstyled">
       <li v-for="course in courses"><i class="fa {{course.icon}}"></i><a href="{{course.url}}">{{course.name}}</a></li>
     </ul>
   </div>
+  <div class="col-xs-12 col-md-5" id="todo">
+    <h3><div class="rev-todo text-center">Todo:</div></h3>
+  <ul class="list-unstyled">
+    <li v-for="assignment in assignments"><i class="fa fa-chevron-right"></i><a href="{{assignment.url}}" title="{{assignment.course}}">{{assignment.name}}</a><br><span class="due-date" title="{{assignment.date}}"><i class="fa fa-clock-o"></i>due {{assignment.due}}.</span></li>
+  </ul>
+  </div>
   <div class="col-xs-12 col-md-4" id="your-submissions">
     <h3><div class="rev-todo text-center">Your Submissions:</div></h3>
-    <h4>No submissions, yet!</h4>
+    <ul class="list-unstyled">
+      <li v-for="submission in submissions"><i class="fa fa-check"></i><a href="{{submission.url}}" title="{{submission.course}}">{{submission.name}}</a></li>
+    </ul>
   </div>
   </div>
   <!--SCRIPTS-->
@@ -53,6 +68,8 @@
     <script src="js/moment.min.js"></script>
     <script src="js/vue.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/jasny-bootstrap.min.js"></script>
   <!--/SCRIPTS-->
   </body>
 </html>
