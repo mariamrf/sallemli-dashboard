@@ -190,3 +190,10 @@ ul li a{
 	font-size: 1.5em;
 	border:none;
 }
+
+#add-course h1{
+	background-color: #42787A;
+	padding:0.3em;
+	transform: skewX(-20deg);
+	-webkit-transform: skewX(-20deg);
+}

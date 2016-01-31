@@ -13,7 +13,7 @@ var menuvm = new Vue({
 	data:{
 		items: [
 		{name: 'Jane Doe', url: 'profile.html', icon:'fa-user'},
-		{name: 'Add Course', url:'#add-course', icon: 'fa-plus-square-o'},
+		{name: 'Add Course', url:'add-course.html', icon: 'fa-plus-square-o'},
 		{name: 'Find Course', url:'#find-course', icon: 'fa-search'},
 		{name: 'Help', url:'#help', icon: 'fa-question'}
 		]
@@ -24,7 +24,7 @@ var navmenuvm = new Vue({
 	data:{
 		items: [
 		{name: 'Jane Doe', url: 'profile.html', icon:'fa-user'},
-		{name: 'Add Course', url:'#add-course', icon: 'fa-plus-square-o'},
+		{name: 'Add Course', url:'add-course.html', icon: 'fa-plus-square-o'},
 		{name: 'Find Course', url:'#find-course', icon: 'fa-search'},
 		{name: 'Help', url:'#help', icon: 'fa-question'}
 		]
