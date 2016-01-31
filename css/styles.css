@@ -41,6 +41,11 @@ ul li a{
 	font-weight: bold;
 	font-size: 1.5em;
 }
+
+.title-nav{
+	font-weight: bold;
+	text-transform: uppercase;
+}
 .title a{
 	color: #331B17;
 }
