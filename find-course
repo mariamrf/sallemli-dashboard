@@ -18,7 +18,7 @@
 <!--OFF CANVAS NAV-->
   <nav id="NavMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas hidden-md hidden-lg" role="navigation">
   <ul class="nav navmenu-nav">
-    <li class="active"><a href="index">Home</a></li>
+    <li class="active"><a href="index.html">Home</a></li>
       <li v-for="item in items"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
       <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
   </ul>
@@ -32,7 +32,7 @@
     <li> <button  data-toggle="offcanvas" data-target="#NavMenu" data-canvas="body" class="navmenu-toggle hidden-md hidden-lg">
     <i class="fa fa-bars"></i><span class="title-nav">Sallem.li</span>
   </button></li>
-      <li class="title hidden-xs hidden-sm"><a href="index">Sallem.li</a></li>
+      <li class="title hidden-xs hidden-sm"><a href="index.html">Sallem.li</a></li>
       <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
     </ul>
     </div>
