@@ -114,8 +114,10 @@
                     due {{assignment.due}}
                     </div>
                     <div class="col-xs-6 col-md-4">
-                    <span v-if="assignment.teacher">{{assignment.submissions}} submitted</span>
-                    <span v-else><span v-if="assignment.submitted" class="submitted"><i class="fa fa-check"></i>Submitted</span><span class="incomplete" v-else><i class="fa fa-exclamation"></i>Incomplete</span></span>
+                    <span v-if="all_courses[courseIndex].teacher">{{assignment.submissions}} submitted</span>
+                    <span v-else>
+                    <span v-if="assignment.submitted" class="submitted"><i class="fa fa-check"></i>Submitted</span><span class="incomplete" v-else><i class="fa fa-exclamation"></i>Incomplete</span>
+                    </span>
                     </div>
                   </div>
                 </li>
