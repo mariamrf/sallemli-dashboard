@@ -12,10 +12,10 @@ var coursevm = new Vue({
 	el: '#your-courses',
 	data: {
 		courses: [
-		{name: 'Analog Communication', url: '#analog', icon: 'fa-graduation-cap'}, //student
-		{name: 'Database Systems', url: '#database', icon: 'fa-coffee'}, //teacher
-		{name: 'Stay Up Late', url: '#me', icon: 'fa-coffee'},
-		{name: 'Computer Networks', url:'#networks', icon: 'fa-graduation-cap'}
+		{name: 'Analog Communication', url: 'course?AN01', icon: 'fa-graduation-cap'}, //student
+		{name: 'Database Systems', url: 'course?IS02', icon: 'fa-coffee'}, //teacher
+		{name: 'Stay Up Late', url: 'course?ME01', icon: 'fa-coffee'},
+		{name: 'Computer Networks', url:'course?CS04', icon: 'fa-graduation-cap'}
 		]
 	}
 });

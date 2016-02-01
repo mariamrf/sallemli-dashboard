@@ -60,7 +60,7 @@ ul li a{
 	-webkit-transform: skewX(20deg);
 }
 
-#todo h3, #profile-name h1{
+#todo h3, #profile-name h1, #course-name h1{
 	background-color: #F0340F;
 	padding:0.3em;
 	transform: skewX(-20deg);
@@ -118,13 +118,13 @@ ul li a{
 	font-size: 1.2em;
 }
 
-.profile-property{
+.profile-property, .course-property{
 	padding:0.3em;
 	transform: skewX(-20deg);
 	-webkit-transform: skewX(-20deg);
 }
 
-.profile-property i{
+.profile-property i, .course-property i{
 	font-size: 0.8em;
 }
 
@@ -143,6 +143,7 @@ ul li a{
 	-webkit-transition: color 0.5s;
 	transition: border-color 0.5s;
 	-webkit-transition: border-color 0.5s;
+	margin-bottom: 1em;
 }
 
 .option:hover{
@@ -204,4 +205,45 @@ ul li a{
 #search-by{
 	margin-bottom: 1em;
 
+}
+
+#course-details{
+	display:none;
+}
+.course-property{
+	margin-bottom: 1em;
+}
+
+.course-property-school{
+	background-color: #42787A;
+}
+
+.course-property-desc{
+	background-color: #409C97;
+}
+
+.course-property-assignments{
+	background-color: #331B17;
+}
+
+.assignment-list{
+	margin-bottom: 1em;
+	text-transform: none;
+	border-bottom: 0.2em dotted rgba(51, 27, 23, 0.5);
+}
+
+.due{
+	font-weight: bold;
+}
+
+.submitted{
+	color: green;
+}
+
+.incomplete{
+	color:red;
+}
+.assignment-name{
+	text-transform: uppercase;
+	font-weight: bold;
 }
