@@ -1,4 +1,4 @@
 var courseID = document.URL.split('?')[1];
 if(courseID == undefined){
-	$('#course-container').load('400.html');
+	$('#course-container').load('404.html');
 }
