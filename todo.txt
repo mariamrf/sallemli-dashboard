@@ -1,3 +1,6 @@
 - trace offcanvas lag
 - typeahead.js for search and forms (schools, courses, etc)
 - divide styles.css (if necessary)
+- on assignment pages, submitted views your submitted file while submit takes you to a modal form (can you resubmit before the deadline?)
+- you can't submit if the deadline has passed
+- add assignment page for teachers

@@ -74,7 +74,7 @@ ul li a{
 	-webkit-transform: skewX(-20deg);
 }
 
-#your-submissions h3{
+#your-submissions h3, #sheet-name h1{
 	background-color: #331B17;
 	padding:0.3em;
 	transform: skewX(-20deg);
@@ -207,7 +207,7 @@ ul li a{
 
 }
 
-#course-details{
+#course-details, #sheet-details{
 	display:none;
 }
 .course-property{
@@ -226,7 +226,7 @@ ul li a{
 	background-color: #331B17;
 }
 
-.assignment-list{
+.assignment-list, .submission{
 	margin-bottom: 1em;
 	text-transform: none;
 	border-bottom: 0.2em dotted rgba(51, 27, 23, 0.5);
@@ -245,5 +245,25 @@ ul li a{
 }
 .assignment-name{
 	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.sheet-property-course{
+	background-color: #F0340F;
+}
+
+.sheet-property-date{
+	background-color: #409C97;
+}
+
+.sheet-property-submissions{
+	background-color: #42787A;
+}
+
+.submitter-name{
+	text-transform: uppercase;
+}
+
+.submission{
 	font-weight: bold;
 }
