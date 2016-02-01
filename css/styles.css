@@ -67,7 +67,7 @@ ul li a{
 	-webkit-transform: skewX(-20deg);
 }
 
-#your-courses h3{
+#your-courses h3, #find-course h1{
 	background-color: #409C97;
 	padding:0.3em;
 	transform: skewX(-20deg);
@@ -196,4 +196,12 @@ ul li a{
 	padding:0.3em;
 	transform: skewX(-20deg);
 	-webkit-transform: skewX(-20deg);
+}
+
+.hide-me{
+	display: none;
+}
+#search-by{
+	margin-bottom: 1em;
+
 }

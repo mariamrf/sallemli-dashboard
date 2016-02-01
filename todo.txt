@@ -1,0 +1,3 @@
+- trace offcanvas lag
+- typeahead.js for search and forms (schools, courses, etc)
+- divide styles.css (if necessary)

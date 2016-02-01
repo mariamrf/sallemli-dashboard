@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sallemli</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery.qtip.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,600' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+ </head>
+  <body>
+<!--OFF CANVAS NAV-->
+  <nav id="NavMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas hidden-md hidden-lg" role="navigation">
+  <ul class="nav navmenu-nav">
+    <li class="active"><a href="index.html">Home</a></li>
+      <li v-for="item in items"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+      <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+  </ul>
+</nav>
+<!--/OFF CANVAS NAV-->
+  
+  <!--TOP MENU-->
+  <div class="container-fluid" id="top-menu">
+  <div class="col-xs-12 col-md-8">
+    <ul class="list-inline">
+    <li> <button  data-toggle="offcanvas" data-target="#NavMenu" data-canvas="body" class="navmenu-toggle hidden-md hidden-lg">
+    <i class="fa fa-bars"></i><span class="title-nav">Sallem.li</span>
+  </button></li>
+      <li class="title hidden-xs hidden-sm"><a href="index.html">Sallem.li</a></li>
+      <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+    </ul>
+    </div>
+    <div class="col-md-4 text-right  hidden-xs hidden-sm">
+      <ul class="list-inline logout"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
+    </div>
+  </div>
+  <!--/TOP MENU-->
+ <div class="container">
+ <div class="row">
+   <div class="col-xs-12" id="find-course"><h1><div class="rev-todo text-center">Find Course</div></h1></div>
+ </div>
+<div class="row">
+   <div class="col-xs-12">
+   <form class="form-horizontal">
+   <label for="search-by" class="col-xs-2 control-label">Search By</label>
+   <div class="col-xs-10">
+   <select id="search-by" class="form-control">
+      <option value="none" disabled selected>Choose One</option>
+     <option value="id">Course ID</option>
+     <option value="name">Course Name</option>
+     <option value="school">School/College Name</option>
+   </select>
+   </div>
+   </form>
+     <form class="form-horizontal" id="add-course-form">
+  <div class="form-group hide-me" id="search-name">
+    <label for="search-course-name" class="col-xs-2 control-label">Course Name</label>
+    <div class="col-xs-10">
+      <input type="text" class="form-control" id="search-course-name" placeholder="Example: 'Computer Networks'">
+    </div>
+  </div>
+  <div class="form-group hide-me" id="search-id">
+    <label for="search-course-id" class="col-xs-2 control-label">Course ID</label>
+    <div class="col-xs-10">
+      <input type="text" class="form-control" id="search-course-id" placeholder="Example: 'CS50'">
+    </div>
+  </div>
+  <div class="form-group hide-me" id="search-school">
+    <label for="search-course-school" class="col-xs-2 control-label">School/College</label>
+    <div class="col-xs-10">
+      <input type="text" class="form-control" id="search-course-school" placeholder="Example: 'Faculty of Engineering, Alexandria University'">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12">
+      <button type="submit" class="option modal-btn">Search</button>
+    </div>
+  </div>
+</form>
+   </div> 
+   </div>
+ </div>
+  <!--SCRIPTS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.qtip.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/find-course.js"></script>
+    <script src="js/jasny-bootstrap.min.js"></script>
+  <!--/SCRIPTS-->
+  </body>
+</html>

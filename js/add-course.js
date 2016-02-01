@@ -3,7 +3,7 @@ $('#add-course-form').submit(function(e){
 	addCourse();
 });
 
-$('#course-id').keyup(function(e){
+$('#course-id').keyup(function(e){ 
 	if(!validateID(e.keyCode) && !$('#course-id-form-group').hasClass('has-error')) {
 	$('#course-id-form-group').addClass('has-error').prepend('<span id="course-id-error" style="margin-left:1em;color:#a32723; font-weight: bold;">ID cannot contain spaces or special characters.</span>');
 
@@ -35,7 +35,7 @@ function addCourse(){
 	
 }
 
-function validateID(){
+function validateID(){ //also validate against db to check for uniqueness
 	var idRegex = /^[a-zA-Z0-9]*$/;
 	var id = $('#course-id').val();
 	if(idRegex.test(id)){
