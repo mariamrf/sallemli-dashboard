@@ -15,18 +15,15 @@
     <link href="css/styles.css" rel="stylesheet">
  </head>
   <body>
-<!--OFF CANVAS NAV-->
   <nav id="NavMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas hidden-md hidden-lg" role="navigation">
   <ul class="nav navmenu-nav">
-    <li class="active"><a href="index.html">Home</a></li>
+    <li><a href="index.html">Home</a></li>
       <li v-for="item in items"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
       <li><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{messages}}</a></li>
       <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
   </ul>
 </nav>
-<!--/OFF CANVAS NAV-->
-  
-  <!--TOP MENU-->
+
   <div class="container-fluid" id="top-menu">
   <div class="col-xs-12 col-md-10">
     <ul class="list-inline">
@@ -35,38 +32,42 @@
   </button></li>
       <li class="title hidden-xs hidden-sm"><a href="index.html">Sallem.li</a></li>
       <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
-    <li class="hidden-xs hidden-sm"><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{messages}}</a></li>
-
+     <li class="hidden-xs hidden-sm"><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{messages}}</a></li>
     </ul>
     </div>
-    <div class="col-md-2 text-right  hidden-xs hidden-sm">
+    <div class="col-md-2 text-right   hidden-xs hidden-sm">
       <ul class="list-inline logout"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
     </div>
   </div>
   <!--/TOP MENU-->
-  <div class="container content">
-  <div class="col-xs-12 col-md-3" id="your-courses">
-  <h3><div class="rev-todo text-center">Your Courses:</div></h3>
-    <ul class="list-unstyled">
-      <li v-for="course in courses | orderBy 'name'"><i class="fa fa-coffee" v-if="course.teacher"></i><i class="fa fa-graduation-cap" v-else></i><a href="course?{{course.id}}">{{course.name}}</a></li>
-      <li class="text-center" v-if="morethanfive"><a href="#seemore">More..</a></li>
-    </ul>
+<!--SUBMITTED CONTAINER-->
+<div class="container" id="submitted-container">
+  <div class="col-xs-12 col-md-6" id="submitted-details">
+     <div class="row" v-if="isAvailable">
+      <div class="col-xs-12" id="submitted-title">
+        <h3><div class="rev-todo text-center">{{studentName}} @ <a href="course?{{course.id}}">{{course.name}}</a></div></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+      <h4>Submitted assignments:</h4>
+        <ul class="list-unstyled">
+          <li v-for="sub in submission_list" class="sub-list">
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="assignment?{{course.id}}&{{sub.id}}"><i class="fa fa-check"></i>{{sub.name}}</a>
+            </div>
+            <div class="col-xs-6 text-right">
+              <button class="option"><i class="fa fa-download"></i>Download</button>
+            </div>
+          </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="col-xs-12 col-md-5" id="todo">
-    <h3><div class="rev-todo text-center"><a href="todo">Todo:</a></div></h3>
-  <ul class="list-unstyled">
-    <li v-for="assignment in assignments"><i class="fa fa-chevron-right"></i><a href="{{assignment.url}}" title="{{assignment.course}}">{{assignment.name}}</a><br><span class="due-date" title="{{assignment.date}}"><i class="fa fa-clock-o"></i>due {{assignment.due}}.</span></li>
-    <li class="text-center" v-if="morethanfive"><a href="todo">More..</a></li>
-  </ul>
-  </div>
-  <div class="col-xs-12 col-md-4" id="your-submissions">
-    <h3><div class="rev-todo text-center"><a href="todo">Your Submissions:</a></div></h3>
-    <ul class="list-unstyled">
-      <li v-for="submission in submissions"><i class="fa fa-check"></i><a href="{{submission.url}}" title="{{submission.course}}">{{submission.name}}</a></li>
-      <li class="text-center" v-if="morethanfive"><a href="todo">More..</a></li>
-    </ul>
-  </div>
-  </div>
+</div>
+<!--SUBMITTED CONTAINER-->
   <!--SCRIPTS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -75,7 +76,8 @@
     <script src="js/vue.js"></script>
     <script src="js/db.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/home.js"></script>
+    <script src="js/jeditable.js"></script>
+    <script src="js/submitted.js"></script>
     <script src="js/jasny-bootstrap.min.js"></script>
   <!--/SCRIPTS-->
   </body>

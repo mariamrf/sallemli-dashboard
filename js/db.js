@@ -15,13 +15,27 @@ var mySubmissions = [
 ];
 
 var myCourses = [
-{id: 'AN01', name: 'Analog Communications', school: 'Faculty of Engineering, Alex U', desc: 'Communicate via analog lol', teacher: false, students: [{id: '2362', name: 'Jane Doe'}, {id: '2457', name: 'Daffy Duck'}], teachers: [{name: 'Ronald McDonald', admin: true}, {name: 'Guy from KFC', admin: false}],assignments: [{id: 1, name: 'Assignment 1', submissions: 20, due: moment("2016-04-05").fromNow(), date: "2016-04-05", submitted: true}, {id:2, name: 'Assignment 2', submissions: 5, due: moment("2016-02-01").fromNow(), date: '2016-02-01', submitted: true}, {id:3, name: 'Assignment 3', submissions: 8, due: moment("2016-02-03").fromNow(), date: '2016-02-03', submitted: true}, {id: 4,name: 'Assignment 4', submissions: 5, due: moment("2016-03-01").fromNow(), date: '2016-03-01', submitted: false}]},
-{id: 'CS04', name: 'Computer Networks', school: 'Computer Science, AAST', desc: 'Connect your computers', students: [{id: '2362', name: 'Jane Doe'}, {id: '2457', name: 'Daffy Duck'}], teachers: [{name: 'Barney', admin: true}, {name: 'Luke Skywalker', admin: false}],teacher: false, assignments: [{id: 1, name: 'Sheet 0', submissions: 17, due: moment("2016-04-05").fromNow(), date: '2016-04-05', submitted: true}, {id: 2, name: 'Sheet 1', submissions: 5, due: moment("2016-02-05").fromNow(), date: '2016-02-05', submitted: false}]},
-{id: 'IS02', name: 'Database Systems', school: 'Faculty of Agriculture', desc: 'Make your databases',  students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}],teachers: [{name: 'Jane Doe', admin: true}, {name: 'R2D2', admin: false}],teacher: true, admin: true, assignments: [{id: 1, name: 'Sheet 0', submissions: 20, due: moment("2016-01-05").fromNow(), date: '2016-01-05'}]},
-{id: 'ME01', name: 'Stay Up Late', school: 'Life', desc:'You know you wanna', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{name: 'Yoda', admin: true}, {name: 'Jane Doe', admin: false}], teacher: true},
-{id: 'ME02', name: 'Fifth Course Added', school: 'Life', desc:'How to populate a list', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{name: 'Jane Doe', admin: true}, {name: 'Mr. Robot', admin: false}], teacher: true, admin: true},
-{id: 'ME03', name: 'Sixth Course Added', school: 'Life', desc:'SEE?', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{name: 'Old McDonald', admin: true}, {name: 'Jane Doe', admin: false}], teacher: true}
+{id: 'AN01', subscribed: true, name: 'Analog Communications', school: 'Faculty of Engineering, Alex U', desc: 'Communicate via analog lol', teacher: false, students: [{id: '2362', name: 'Jane Doe'}, {id: '2457', name: 'Daffy Duck'}], teachers: [{name: 'Ronald McDonald', admin: true}, {name: 'Guy from KFC', admin: false}],assignments: [{id: 1, name: 'Assignment 1', submissions: 20, due: moment("2016-04-05").fromNow(), date: "2016-04-05", submitted: true}, {id:2, name: 'Assignment 2', submissions: 5, due: moment("2016-02-01").fromNow(), date: '2016-02-01', submitted: true}, {id:3, name: 'Assignment 3', submissions: 8, due: moment("2016-02-03").fromNow(), date: '2016-02-03', submitted: true}, {id: 4,name: 'Assignment 4', submissions: 5, due: moment("2016-03-01").fromNow(), date: '2016-03-01', submitted: false}]},
+{id: 'CS04', subscribed: true, name: 'Computer Networks', school: 'Computer Science, AAST', desc: 'Connect your computers', students: [{id: '2362', name: 'Jane Doe'}, {id: '2457', name: 'Daffy Duck'}], teachers: [{name: 'Barney', admin: true}, {name: 'Luke Skywalker', admin: false}],teacher: false, assignments: [{id: 1, name: 'Sheet 0', submissions: 17, due: moment("2016-04-05").fromNow(), date: '2016-04-05', submitted: true}, {id: 2, name: 'Sheet 1', submissions: 5, due: moment("2016-02-05").fromNow(), date: '2016-02-05', submitted: false}]},
+{id: 'IS02', subscribed: false, name: 'Database Systems', school: 'Faculty of Agriculture', desc: 'Make your databases',  students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}],teachers: [{name: 'Jane Doe', admin: true}, {name: 'R2D2', admin: false}],teacher: true, admin: true, assignments: [{id: 1, name: 'Sheet 0', submissions: 20, due: moment("2016-01-05").fromNow(), date: '2016-01-05'}]},
+{id: 'ME01', subscribed: false, name: 'Stay Up Late', school: 'Life', desc:'You know you wanna', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{name: 'Yoda', admin: true}, {name: 'Jane Doe', admin: false}], teacher: true},
+{id: 'ME02', subscribed: false, name: 'Fifth Course Added', school: 'Life', desc:'How to populate a list', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{name: 'Jane Doe', admin: true}, {name: 'Mr. Robot', admin: false}], teacher: true, admin: true},
+{id: 'ME03', subscribed: false, name: 'Sixth Course Added', school: 'Life', desc:'SEE?', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{name: 'Old McDonald', admin: true}, {name: 'Jane Doe', admin: false}], teacher: true}
 ];
 
+var allStudents = [
+{id: '2362', name: 'Jane Doe'},
+{id: '2457', name: 'Daffy Duck'},
+{id: '2361', name: 'Anakin Skywalker'},
+{id: '6547', name: 'Mr. Moseby'}
+];
+
+var allSubmissions =[
+{course: 'AN01', student: '2362', assignments: [1, 2, 3]},
+{course: 'AN01', student: '2457', assignments: [1, 2]},
+{course: 'CS04', student: '2362', assignments: [1]},
+{course: 'CS04', student: '2457', assignments: [1, 2]},
+{course: 'IS02', student: '2361', assignments: [1]}
+];
 
 

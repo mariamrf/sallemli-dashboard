@@ -1,4 +1,40 @@
 /* GENERAL */
+
+h1 a, h2 a, h3 a, h1 a:hover, h2 a:hover, h3 a:hover{
+color:white;
+}
+::-webkit-scrollbar {
+  width: .5em;
+  height: .5em;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #f0340f;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a4250b;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #a4250b;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 51px;
+}
+::-webkit-scrollbar-track:hover, ::-webkit-scrollbar-track:active{
+  background: #6e6e6e;
+}
+ 
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 body{
 	font-family: 'Signika Negative', sans-serif;
 	font-size: 1.5em;
@@ -78,22 +114,24 @@ ul li a{
 	transform: skewX(20deg);
 	-webkit-transform: skewX(20deg);
 }
-
-#todo h3, #profile-name h1, #course-name h1{
+.small-letters{
+	text-transform: lowercase;
+}
+#todo h3, #profile-name h1, #course-name h1, #todo-title h1{
 	background-color: #F0340F;
 	padding:0.3em;
 	transform: skewX(-20deg);
 	-webkit-transform: skewX(-20deg);
 }
 
-#your-courses h3, #find-course h1{
+#your-courses h3, #find-course h1, #submitted-title h3{
 	background-color: #409C97;
 	padding:0.3em;
 	transform: skewX(-20deg);
 	-webkit-transform: skewX(-20deg);
 }
 
-#your-submissions h3, #sheet-name h1{
+#your-submissions h3, #sheet-name h1, #done-details h1{
 	background-color: #331B17;
 	padding:0.3em;
 	transform: skewX(-20deg);
@@ -226,7 +264,7 @@ ul li a{
 
 }
 
-#course-details, #sheet-details{
+#course-details, #sheet-details, #submitted-details{
 	display:none;
 }
 .course-property{
@@ -253,7 +291,7 @@ ul li a{
 	background-color: #331B17;
 }
 
-.assignment-list, .submission, .student-list{
+.assignment-list, .submission, .student-list, .sub-list, .one-todo, .one-sub{
 	margin-bottom: 1em;
 	text-transform: none;
 	border-bottom: 0.2em dotted rgba(51, 27, 23, 0.5);
@@ -305,4 +343,22 @@ ul li a{
 .view-submissions{
 	padding:0.3em;
 	margin-bottom: 0.3em;
+}
+
+#submitted-title a{
+	color: white;
+}
+#submitted-title a:hover{
+	color: white;
+}
+.one-todo{
+	text-transform: uppercase;
+}
+.one-sub{
+	padding-bottom:.5em;
+	padding-top:.5em;
+	text-transform: uppercase;
+}
+.one-sub:hover{
+	background-color: #F8E8B5;
 }

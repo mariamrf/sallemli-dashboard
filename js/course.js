@@ -26,14 +26,42 @@ var coursevm = new Vue({
 		teachers: function(){
 			return this.all_courses[this.courseIndex].teachers;
 		}
+	},
+	methods: {
+		
+	}
+});
+function hasSubs(id){
+			var flag=false;
+				for(var j=0; j<allSubmissions.length; j++){
+					if(allSubmissions[j].student.toLowerCase() == id && allSubmissions[j].course.toLowerCase()==courseID.toLowerCase())
+					 {flag=true; break;}
+				}
+	
+			return flag;
+};
+
+$('.student-list').each(function(){
+	var sID = $(this).attr('id');
+	var subs = 'view-subs-' + sID;
+	if(!hasSubs(sID)){
+		$('#'+subs).empty();
+		$('#'+subs).append('<span style="text-transform: uppercase; color: red;">No submissions yet</span>');
 	}
 });
 
-
-if(courseID == undefined || courseID == "" || !coursevm.isAvailable){
+if(document.location.search.length != 0){ //why this doesn't work as expected I will never know
+	if(courseID && coursevm.isAvailable){
+	$('#course-details').css('display', 'block');
+} else {
 	$('#course-container').load('404.html');
 }
-else{
-	$('#course-details').css('display', 'block');
+}else{
+	$('#course-container').load('404.html');
 }
 
+
+function checkMe(){
+	if(courseID) return true;
+	else return false;
+}
