@@ -34,6 +34,26 @@ var sheetvm = new Vue({
 		},
 		assignmentIndex: function(){
 			return assignmentID-1;
+		},
+		submissions: function(){
+			var res = [];
+			var st, name;
+			for(var i=0; i<allSubmissions.length; i++){
+				if(allSubmissions[i].course.toLowerCase() == courseID.toLowerCase()){
+					for(var j=0; j<allSubmissions[i].assignments.length; j++){
+						if(parseInt(allSubmissions[i].assignments[j])==assignmentID){
+								st = allSubmissions[i].student;
+							for(var k=0; k<allStudents.length; k++){
+								if(allStudents[k].id == st){
+									name = allStudents[k].name;
+								}
+							}
+								res.push({id: st, name: name});
+						}
+					}
+				}
+			}
+			return res;
 		}
 	}
 });
