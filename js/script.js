@@ -49,7 +49,11 @@ $('#top-menu ul:first').append('<li><input type="search" class="search" placehol
 
 $('.search').keypress(function (e) {
   if (e.which == 13) {
-   window.location.href = 'results.html?q=' + $('.search').val();
+  	var value = $('.search').val();
+  	if(value!=""){
+  		window.location.href = 'results.html?q=' + $('.search').val();
+  	}
+   
 //<---search function
    
   }
