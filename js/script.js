@@ -45,3 +45,12 @@ var navmenuvm = new Vue({
 });
 
 
+$('#top-menu ul:first').append('<li><input type="search" class="search" placeholder="Find course.."></input></li>'); //add this to actual code, or just put in the whole thing via javascript
+
+$('.search').keypress(function (e) {
+  if (e.which == 13) {
+   window.location.href = 'results.html?q=' + $('.search').val();
+//<---search function
+   
+  }
+});

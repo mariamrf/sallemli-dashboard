@@ -60,3 +60,4 @@ var submissionvm = new Vue({
 		}
 	}
 });
+

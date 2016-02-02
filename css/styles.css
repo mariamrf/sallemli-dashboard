@@ -11,6 +11,25 @@ ul li{
 	text-transform: uppercase;
 }
 
+.search{
+	border-radius: 1em;
+	border: 0.1em solid rgba(51, 27, 23, 0.5);
+	padding: 0.3em;
+	padding-left: 1em;
+}
+
+.search:focus{
+	border-color: rgba(240, 52, 15, 1);
+	outline: none;
+}
+#search-results{
+	display:none;
+}
+.query{
+	border-bottom: 0.1em dotted rgba(51, 27, 23, 0.5);
+	color: #F0340F;
+}
+
 #top-menu{
 	min-height:6em;
 	border-bottom: 0.1em solid black;
