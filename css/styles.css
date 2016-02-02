@@ -237,6 +237,14 @@ ul li a{
 	background-color: #42787A;
 }
 
+.course-property-teachers{
+	background-color: #6a382f;
+}
+
+.course-property-students{
+	background-color: #d7b547;
+}
+
 .course-property-desc{
 	background-color: #409C97;
 }
@@ -245,10 +253,14 @@ ul li a{
 	background-color: #331B17;
 }
 
-.assignment-list, .submission{
+.assignment-list, .submission, .student-list{
 	margin-bottom: 1em;
 	text-transform: none;
 	border-bottom: 0.2em dotted rgba(51, 27, 23, 0.5);
+}
+
+.student-list{
+	padding-bottom: 0.5em;
 }
 
 .due{
@@ -262,7 +274,7 @@ ul li a{
 .incomplete{
 	color:red;
 }
-.assignment-name{
+.assignment-name, .teacher-name{
 	text-transform: uppercase;
 	font-weight: bold;
 }
@@ -285,4 +297,12 @@ ul li a{
 
 .submission{
 	font-weight: bold;
+}
+.admin{
+	font-size:0.8em;
+}
+
+.view-submissions{
+	padding:0.3em;
+	margin-bottom: 0.3em;
 }

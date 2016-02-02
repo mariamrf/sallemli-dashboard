@@ -25,7 +25,7 @@
 </nav>
 
   <div class="container-fluid" id="top-menu">
-  <div class="col-xs-12 col-md-8">
+  <div class="col-xs-12 col-md-10">
     <ul class="list-inline">
     <li> <button  data-toggle="offcanvas" data-target="#NavMenu" data-canvas="body" class="navmenu-toggle hidden-md hidden-lg">
     <i class="fa fa-bars"></i><span class="title-nav">Sallem.li</span>
@@ -33,10 +33,9 @@
       <li class="title hidden-xs hidden-sm"><a href="index.html">Sallem.li</a></li>
       <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
       <li class="hidden-xs hidden-sm"><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{messages}}</a></li>
-
     </ul>
     </div>
-    <div class="col-md-4 text-right   hidden-xs hidden-sm">
+    <div class="col-md-2 text-right   hidden-xs hidden-sm">
       <ul class="list-inline logout"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
     </div>
   </div>
@@ -79,23 +78,50 @@
           </li>
           <!--/COURSE PROPERTY-->
         </ul>
-         <div class="row" v-if="all_courses[courseIndex].teacher">
-        <div class="col-xs-12">
-        <ul class="list-unstyled list-inline">
-          <li><button class="option"><i class="fa fa-plus"></i>Add Assignment</button></li>
-          <li><button class="option"><i class="fa fa-pencil"></i>Edit Course</button></li>
-          <li><button class="option"><i class="fa fa-times"></i>Delete Course</button></li>
-          </ul>
-        </div>
+        <div class="row" v-if="all_courses[courseIndex].teacher">
+          <div class="col-xs-12">
+            <ul class="list-unstyled list-inline">
+                <li><button class="option" v-if="all_courses[courseIndex].admin"><i class="fa fa-plus"></i>Add Teacher</button></li>
+                <li><button class="option"><i class="fa fa-plus"></i>Add Assignment</button></li>
+                <li><button class="option"><i class="fa fa-pencil"></i>Edit Course</button></li>
+                <li><button class="option" v-if="all_courses[courseIndex].admin"><i class="fa fa-times"></i>Delete Course</button></li>
+            </ul>
+          </div>
         </div>
         <div class="row" v-else>
-        <div class="col-xs-12">
-        <ul class="list-unstyled list-inline">
-          <li><button class="option"><i class="fa fa-plus"></i>Submit Assignment</button></li>
-          <li><button class="option"><i class="fa fa-envelope-o"></i>Contact Teacher</button></li>
-        </ul>
+          <div class="col-xs-12">
+            <ul class="list-unstyled list-inline">
+              <li><button class="option"><i class="fa fa-plus"></i>Submit Assignment</button></li>
+              <li><button class="option"><i class="fa fa-envelope-o"></i>Contact Teacher</button></li>
+            </ul>
+          </div>
         </div>
-        </div>
+          <!--TEACHERS-->
+          <div class="row">
+            <div class="col-xs-12 text-center course-property course-property-teachers">
+              <div class="rev-todo">
+                <i class="fa fa-coffee"></i>
+                TEACHERS
+              </div>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-xs-12">
+            <ul class="list-unstyled">
+                <li v-for="teacher in teachers" class="assignment-list">
+                  <div class="row">
+                    <div class="col-xs-6 teacher-name">
+                     <i class="fa fa-user"></i>{{teacher.name}} <span v-if="teacher.admin" class="admin">(Admin)</span>
+                    </div>
+                    <div class="col-xs-6 text-right" v-if="all_courses[courseIndex].admin">
+                      <span v-if="teacher.admin"></span><span v-else><a href="#"><i class="fa fa-times"></i>REMOVE</a></span>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+            </div>
+          </div>
+          <!--/TEACHERS-->
         <!--ASSIGNMENTS-->
           <div class="row">
             <div class="col-xs-12 text-center course-property course-property-assignments">
@@ -129,6 +155,37 @@
             </div>
           </div>
           <!--/ASSIGNMENTS-->
+          <!--STUDENTS-->
+          <div v-if="all_courses[courseIndex].teacher">
+          <div class="row">
+            <div class="col-xs-12 text-center course-property course-property-students">
+              <div class="rev-todo">
+                <i class="fa fa-graduation-cap"></i>
+                STUDENTS
+              </div>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-xs-12">
+            <ul class="list-unstyled"  v-if="all_courses[courseIndex].students">
+                <li v-for="student in all_courses[courseIndex].students | orderBy 'id'" class="student-list">
+                  <div class="row">
+                    <div class="col-xs-4 assignment-name">
+                      <i class="fa fa-child"></i>{{student.name}}
+                    </div>
+                    <div class="col-xs-4">{{student.id}}</div>
+                    <div class="col-xs-4 text-right" v-if="all_courses[courseIndex].assignments">
+                    <a class="option view-submissions" href="submitted?{{all_courses[courseIndex].id}}&{{student.id}}"><i class="fa fa-eye"></i>View Submissions</a>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+            <div v-else><h4>No students have subscribed, yet!</h4></div>
+            </div>
+          </div>
+          </div>
+          <!--/STUDENTS-->
+        
       </div>
       </div>
     </div>
@@ -140,9 +197,10 @@
     <script src="js/jquery.qtip.min.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/vue.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/course.js"></script>
     <script src="js/script.js"></script>
     <script src="js/jeditable.js"></script>
-    <script src="js/course.js"></script>
     <script src="js/jasny-bootstrap.min.js"></script>
   <!--/SCRIPTS-->
   </body>
