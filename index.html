@@ -13,6 +13,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <link rel="import" href="top-menu.html">
  </head>
   <body>
 <!--OFF CANVAS NAV-->
@@ -20,6 +21,7 @@
   <ul class="nav navmenu-nav">
     <li class="active"><a href="index.html">Home</a></li>
       <li v-for="item in items"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+      <li><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{messages}}</a></li>
       <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
   </ul>
 </nav>
@@ -27,19 +29,16 @@
   
   <!--TOP MENU-->
   <div class="container-fluid" id="top-menu">
-  <div class="col-xs-12 col-md-8">
-    <ul class="list-inline">
-    <li> <button  data-toggle="offcanvas" data-target="#NavMenu" data-canvas="body" class="navmenu-toggle hidden-md hidden-lg">
-    <i class="fa fa-bars"></i><span class="title-nav">Sallem.li</span>
-  </button></li>
-      <li class="title hidden-xs hidden-sm"><a href="index.html">Sallem.li</a></li>
-      <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
-    </ul>
-    </div>
-    <div class="col-md-4 text-right  hidden-xs hidden-sm">
-      <ul class="list-inline logout"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
-    </div>
   </div>
+  <script>
+    var link = document.querySelector('link[rel="import"]');
+
+    // Clone the <template> in the import.
+    var template = link.import.querySelector('template');
+    var clone = document.importNode(template.content, true);
+
+    document.querySelector('#top-menu').appendChild(clone);
+  </script>
   <!--/TOP MENU-->
   <div class="container content">
   <div class="col-xs-12 col-md-3" id="your-courses">
