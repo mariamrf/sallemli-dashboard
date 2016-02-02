@@ -13,7 +13,6 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <link rel="import" href="top-menu.html">
  </head>
   <body>
 <!--OFF CANVAS NAV-->
@@ -28,25 +27,43 @@
 <!--/OFF CANVAS NAV-->
   
   <!--TOP MENU-->
- {{{topMenu}}}
+  <div class="container-fluid" id="top-menu">
+  <div class="col-xs-12 col-md-8">
+    <ul class="list-inline">
+    <li> <button  data-toggle="offcanvas" data-target="#NavMenu" data-canvas="body" class="navmenu-toggle hidden-md hidden-lg">
+    <i class="fa fa-bars"></i><span class="title-nav">Sallem.li</span>
+  </button></li>
+      <li class="title hidden-xs hidden-sm"><a href="index.html">Sallem.li</a></li>
+      <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+    <li class="hidden-xs hidden-sm"><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{messages}}</a></li>
+
+    </ul>
+    </div>
+    <div class="col-md-4 text-right  hidden-xs hidden-sm">
+      <ul class="list-inline logout"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
+    </div>
+  </div>
   <!--/TOP MENU-->
   <div class="container content">
   <div class="col-xs-12 col-md-3" id="your-courses">
   <h3><div class="rev-todo text-center">Your Courses:</div></h3>
     <ul class="list-unstyled">
       <li v-for="course in courses"><i class="fa {{course.icon}}"></i><a href="{{course.url}}">{{course.name}}</a></li>
+      <li class="text-center" v-if="morethanfive"><a href="#seemore">More..</a></li>
     </ul>
   </div>
   <div class="col-xs-12 col-md-5" id="todo">
     <h3><div class="rev-todo text-center">Todo:</div></h3>
   <ul class="list-unstyled">
     <li v-for="assignment in assignments"><i class="fa fa-chevron-right"></i><a href="{{assignment.url}}" title="{{assignment.course}}">{{assignment.name}}</a><br><span class="due-date" title="{{assignment.date}}"><i class="fa fa-clock-o"></i>due {{assignment.due}}.</span></li>
+    <li class="text-center" v-if="morethanfive"><a href="#seemore">More..</a></li>
   </ul>
   </div>
   <div class="col-xs-12 col-md-4" id="your-submissions">
     <h3><div class="rev-todo text-center">Your Submissions:</div></h3>
     <ul class="list-unstyled">
       <li v-for="submission in submissions"><i class="fa fa-check"></i><a href="{{submission.url}}" title="{{submission.course}}">{{submission.name}}</a></li>
+      <li class="text-center" v-if="morethanfive"><a href="#seemore">More..</a></li>
     </ul>
   </div>
   </div>

@@ -1,14 +1,7 @@
-var bodyvm = new Vue({
-	el: 'body',
-	data: {
-		topMenu: '<div class="container-fluid" id="top-menu"></div><script>var link = document.querySelector('+'link[rel="import"]'+');var template = link.import.querySelector('+'template'+');var clone = document.importNode(template.content, true);document.querySelector('+'#top-menu'+').appendChild(clone);</script>'
-	}
-});
+
 
  $(document).ready(function(){
 
- 	$('.fa-graduation-cap').attr("title", "Student"); //fix this
- 	$('.fa-coffee').attr("title", "Teacher");
  	$('[title]').qtip({
  	style:{
  		classes: 'qtip-tipsy'
@@ -23,7 +16,7 @@ var menuvm = new Vue({
 		items: [
 		{name: 'Jane Doe', url: 'profile', icon:'fa-user'},
 		{name: 'Add Course', url:'add-course', icon: 'fa-plus-square-o'},
-		{name: 'Find Course', url:'find-course', icon: 'fa-search'}//,
+		//,
 		//{name: 'Help', url:'#help', icon: 'fa-question'}
 		]
 	},
@@ -40,9 +33,8 @@ var navmenuvm = new Vue({
 		message_link: '#messages',
 		items: [
 		{name: 'Jane Doe', url: 'profile', icon:'fa-user'},
-		{name: 'Add Course', url:'add-course', icon: 'fa-plus-square-o'},
-		{name: 'Find Course', url:'find-course', icon: 'fa-search'},
-		{name: 'Help', url:'#help', icon: 'fa-question'}
+		{name: 'Add Course', url:'add-course', icon: 'fa-plus-square-o'}//,
+		//{name: 'Help', url:'#help', icon: 'fa-question'}
 		]
 	},
 	computed: {

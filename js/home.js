@@ -1,3 +1,14 @@
+
+ $(document).ready(function(){
+
+ 	$('.fa-graduation-cap').attr("title", "Student"); //fix this
+ 	$('.fa-coffee').attr("title", "Teacher");
+ 	$('[title]').qtip({
+ 	style:{
+ 		classes: 'qtip-tipsy'
+ 	}
+ });} )//TOOLTIPS
+
 var todovm = new Vue({
 	el: '#todo',
 	data: {
@@ -5,6 +16,12 @@ var todovm = new Vue({
 		{name: 'Sheet 1', url: 'assignment?CS04&2', course: 'Computer Networks', due: moment("2016-02-05").fromNow(), date: '05-02-2016'},
 		{name: 'Assignment 4', url: 'assignment?AN01&4', course: 'Analog Communication', due: moment("2016-03-01").fromNow(), date: '01-03-2016'}
 		]
+	},
+	computed: {
+		morethanfive: function(){
+			if(this.assignments.length>5) return true;
+			else return false;
+		}
 	}
 });
 
@@ -17,6 +34,12 @@ var coursevm = new Vue({
 		{name: 'Stay Up Late', url: 'course?ME01', icon: 'fa-coffee'},
 		{name: 'Computer Networks', url:'course?CS04', icon: 'fa-graduation-cap'}
 		]
+	},
+	computed: {
+		morethanfive: function(){
+			if(this.courses.length>5) return true;
+			else return false;
+		}
 	}
 });
 
@@ -29,5 +52,11 @@ var submissionvm = new Vue({
 		{name: 'Assignment 2', url: 'assignment?AN01&2', course: 'Analog Communication'},
 		{name: 'Assignment 1', url: 'assignment?AN01&1', course: 'Analog Communication'}
 		]
+	},
+	computed: {
+		morethanfive: function(){
+			if(this.submissions.length>5) return true;
+			else return false;
+		}
 	}
 });

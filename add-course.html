@@ -20,6 +20,7 @@
   <ul class="nav navmenu-nav">
     <li class="active"><a href="index.html">Home</a></li>
       <li v-for="item in items"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+      <li><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{messages}}</a></li>
       <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
   </ul>
 </nav>
@@ -34,6 +35,7 @@
   </button></li>
       <li class="title hidden-xs hidden-sm"><a href="index.html">Sallem.li</a></li>
       <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+      <li class="hidden-xs hidden-sm"><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{messages}}</a></li>
     </ul>
     </div>
     <div class="col-md-4 text-right  hidden-xs hidden-sm">
