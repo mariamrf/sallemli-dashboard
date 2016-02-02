@@ -2,7 +2,7 @@ Vue.config.debug = true;
 var queryphrase = document.URL.split('?q=')[1];
 
 if(queryphrase==undefined || queryphrase==""){
-	$('#search-results').load('404.html');
+	$('#search-container').load('404.html');
 }else{
 	$('#search-results').css('display', 'block');
 }
