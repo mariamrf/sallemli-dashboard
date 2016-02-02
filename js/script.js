@@ -1,6 +1,13 @@
+var bodyvm = new Vue({
+	el: 'body',
+	data: {
+		topMenu: '<div class="container-fluid" id="top-menu"></div><script>var link = document.querySelector('+'link[rel="import"]'+');var template = link.import.querySelector('+'template'+');var clone = document.importNode(template.content, true);document.querySelector('+'#top-menu'+').appendChild(clone);</script>'
+	}
+});
+
  $(document).ready(function(){
 
- 	$('.fa-graduation-cap').attr("title", "Student");
+ 	$('.fa-graduation-cap').attr("title", "Student"); //fix this
  	$('.fa-coffee').attr("title", "Teacher");
  	$('[title]').qtip({
  	style:{

@@ -28,17 +28,7 @@
 <!--/OFF CANVAS NAV-->
   
   <!--TOP MENU-->
-  <div class="container-fluid" id="top-menu">
-  </div>
-  <script>
-    var link = document.querySelector('link[rel="import"]');
-
-    // Clone the <template> in the import.
-    var template = link.import.querySelector('template');
-    var clone = document.importNode(template.content, true);
-
-    document.querySelector('#top-menu').appendChild(clone);
-  </script>
+ {{{topMenu}}}
   <!--/TOP MENU-->
   <div class="container content">
   <div class="col-xs-12 col-md-3" id="your-courses">
