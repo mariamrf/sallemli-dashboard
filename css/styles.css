@@ -343,6 +343,7 @@ ul li a{
 .view-submissions{
 	padding:0.3em;
 	margin-bottom: 0.3em;
+	text-transform: uppercase;
 }
 
 #submitted-title a{
