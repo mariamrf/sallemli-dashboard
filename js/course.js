@@ -74,7 +74,8 @@ var submitAssignmentvm = new Vue({
 		unsubmitted: function(){
 			// JANE DOE IS STUDENT 2362
 			var sheets = []; //initial values because vue..
-			var all = coursevm.all_courses[coursevm.courseIndex].assignments.slice();
+			if(coursevm.all_courses[coursevm.courseIndex].assignments){
+				var all = coursevm.all_courses[coursevm.courseIndex].assignments.slice();
 			for(var i=0; i<allSubmissions.length; i++){
 				if(allSubmissions[i].student=='2362' && allSubmissions[i].course.toLowerCase() == courseID.toLowerCase())
 					sheets.push(allSubmissions[i].assignments);
@@ -89,6 +90,8 @@ var submitAssignmentvm = new Vue({
 				}
 			}
 				return all;
+			
+			}
 			
 		},
 		hasUnsubs: function(){
