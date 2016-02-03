@@ -32,10 +32,11 @@ var coursevm = new Vue({
 		},
 		teachers: function(){
 			return this.all_courses[this.courseIndex].teachers;
+		},
+		hasAssignments: function(){
+			if(this.all_courses[this.courseIndex].assignments && this.all_courses[this.courseIndex].assignments.length>0) return true;
+			else return false;
 		}
-	},
-	methods: {
-		
 	}
 });
 
@@ -63,6 +64,43 @@ var editcoursevm = new Vue({
 					$('#editCourse').modal('toggle');
 				}
 			}
+		}
+	}
+});
+
+var submitAssignmentvm = new Vue({
+	el: '#submitAssignment',
+	computed: {
+		unsubmitted: function(){
+			// JANE DOE IS STUDENT 2362
+			var sheets = []; //initial values because vue..
+			var all = coursevm.all_courses[coursevm.courseIndex].assignments.slice();
+			for(var i=0; i<allSubmissions.length; i++){
+				if(allSubmissions[i].student=='2362' && allSubmissions[i].course.toLowerCase() == courseID.toLowerCase())
+					sheets.push(allSubmissions[i].assignments);
+			}
+			if(sheets[0]){ //if Jane Doe submitted any assignments for this course
+				for(var i=0; i<all.length; i++){
+					for(var k=0; k<sheets[0].length; k++){
+						if(sheets[0][k]==all[i].id){
+							all.splice(i, 1);
+						}
+					}
+				}
+			}
+				return all;
+			
+		},
+		hasUnsubs: function(){
+			if(this.unsubmitted && this.unsubmitted.length>0) return true;
+			else return false;
+		}
+	},
+	methods: {
+		submitAssignment: function(e){
+			e.preventDefault();
+			//submit and validate existence of everything
+			$('#submitAssignment').modal('toggle');
 		}
 	}
 });
@@ -132,6 +170,11 @@ $('.cancel-this-course').click(function(){
 	$('#deleteCourse').modal('toggle');
 });
 
+$('#contact-teacher-button').click(function(e){
+	e.preventDefault();
+	//send message and clear fields, verify all is in there and all
+	$('#contactTeacher').modal('toggle');
+});
 
 $('.remove-teacher-button').click(function(){
 	removeTeachervm.teacher = $(this).attr('id');

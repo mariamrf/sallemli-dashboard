@@ -91,8 +91,8 @@
         <div class="row" v-else>
           <div class="col-xs-12">
             <ul class="list-unstyled list-inline" v-if="all_courses[courseIndex].subscribed">
-              <li><button class="option"><i class="fa fa-plus"></i>Submit Assignment</button></li>
-              <li><button class="option"><i class="fa fa-envelope-o"></i>Contact Teacher</button></li>
+              <li><button class="option" v-if="hasAssignments" data-toggle="modal" data-target="#submitAssignment"><i class="fa fa-plus"></i>Submit Assignment</button></li>
+              <li><button class="option"  data-toggle="modal" data-target="#contactTeacher"><i class="fa fa-envelope-o"></i>Contact Teacher</button></li>
               </ul>
               <ul class="list unstyled list-inline" v-else>
               <li><button class="option"><i class="fa fa-graduation-cap"></i>Are you a teacher?</button></li>
@@ -196,6 +196,36 @@
   </div>
 
     <!--MODALS-->
+    <!--CONTACT TEACHER-->
+     <div class="modal fade" id="contactTeacher" role="dialog" aria-labelledby="contactTeacherLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="contactTeacherLabel">Contact Teacher(s)</h4>
+        </div>
+        <div class="modal-body">
+        <form class="form">
+            <div class="form-group">
+            <label for="contact-teacher-subject" class="control-label">Subject:</label>
+            <input type="text" class="form-control" id="contact-teacher-subject" placeholder="Example: Grading Complaint..">
+            </div>
+            <div class="form-group">
+             <label for="description-edit" class="control-label">Message:</label>
+            <textarea class="form-control" id="description-edit" placeholder="What do you want to say?"></textarea>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" checked> Request reply (include your e-mail in the message)
+              </label>
+            </div>
+            <button type="submit" class="option modal-btn" id="contact-teacher-button">Send Message</button>
+        </form>
+        </div>
+      </div>
+     </div>
+    </div>
+    <!--/CONTACT TEACHER-->
    <!--EDIT COURSE-->
      <div class="modal fade" id="editCourse" role="dialog" aria-labelledby="editCourseLabel">
     <div class="modal-dialog" role="document">
@@ -220,7 +250,7 @@
       </div>
      </div>
     </div>
-    <!--/CHANGE NAME-->
+    <!--/EDIT COURSE-->
      <!--DELETE COURSE-->
      <div class="modal fade" id="deleteCourse" role="dialog" aria-labelledby="deleteCourseLabel">
     <div class="modal-dialog modal-sm" role="document">
@@ -269,6 +299,38 @@
      </div>
     </div>
     <!--/ADD ASSIGNMENT-->
+    <!--SUBMIT ASSIGNMENT-->
+     <div class="modal fade" id="submitAssignment" role="dialog" aria-labelledby="submitAssignmentLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="submitAssignmentLabel">Submit Assignment</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form">
+            <div class="form-group">
+            <label for="sheet-to-submit-name" class="control-label">Assignment:</label>
+            <select class="form-control" id="sheet-to-submit-name"  v-if="hasUnsubs">
+              <option v-for="unsub in unsubmitted" value="{{unsub.id}}">{{unsub.name}}</option>
+            </select>
+            <select class="form-control" id="sheet-to-submit-name"  v-else>
+              <option disabled>No Assignments Left</option>
+            </select>
+            </div>
+            <label for="sheet-to-submit-file" class="control-label">File:</label>
+            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+              <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+              <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input id="sheet-to-submit-file" type="file" name="..."></span>
+              <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+          </div>
+            <button type="submit" id="submit-assignment-button" class="option modal-btn" v-on:click="submitAssignment">Submit</button>
+        </form>
+        </div>
+      </div>
+     </div>
+    </div>
+    <!--/SUBMIT ASSIGNMENT-->
      <!--ADD TEACHER-->
      <div class="modal fade" id="addTeacher" role="dialog" aria-labelledby="addTeacherLabel">
     <div class="modal-dialog" role="document">
