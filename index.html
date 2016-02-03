@@ -46,7 +46,7 @@
   <!--/TOP MENU-->
   <div class="container content">
   <div class="col-xs-12 col-md-3" id="your-courses">
-  <h3><div class="rev-todo text-center">Your Courses:</div></h3>
+  <h3><div class="rev-todo text-center"><a href="my-courses">Your Courses:</a></div></h3>
     <ul class="list-unstyled">
       <li v-for="course in courses | orderBy 'name'"><i class="fa fa-coffee" v-if="course.teacher"></i><i class="fa fa-graduation-cap" v-else></i><a href="course?{{course.id}}">{{course.name}}</a></li>
       <li class="text-center" v-if="morethanfive"><a href="my-courses">More..</a></li>
