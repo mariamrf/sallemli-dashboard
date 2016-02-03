@@ -1,5 +1,12 @@
 Vue.config.debug = true;
-var courseID = document.URL.split('?')[1];
+var courseID;
+if(document.URL.indexOf('#')!=-1){
+	courseID = document.URL.split('?')[1].split('#')[0];
+}
+else{
+	courseID = document.URL.split('?')[1];
+}
+
 var coursevm = new Vue({
 	el: '#course-details',
 	data: {
@@ -31,7 +38,7 @@ var coursevm = new Vue({
 		
 	}
 });
-var modalvm = new Vue({
+var editcoursevm = new Vue({
 	el: '#editCourse',
 	computed: {
 		name: function(){
@@ -59,15 +66,62 @@ var modalvm = new Vue({
 	}
 });
 
-$('.delete-this').click(function(){
+var removeTeachervm = new Vue({
+	el: '#removeTeacher',
+	data: {
+		teacher: 'error'
+	},
+	computed: {
+		teacherName: function(){
+			for(var i=0; i<coursevm.teachers.length; i++){
+				if(coursevm.isAvailable){
+					if(coursevm.teachers[i].id == this.teacher)
+					return coursevm.teachers[i].name;
+				}
+				
+			}
+		},
+		teacherIndex: function(){
+			for(var i=0; i<coursevm.teachers.length; i++){
+				if(coursevm.isAvailable){
+					if(coursevm.teachers[i].id == this.teacher)
+					return i;
+				}
+				
+			}
+		}
+	},
+	methods: {
+		removeTeacher: function(){
+			coursevm.teachers.splice(this.teacherIndex, 1); //and remove from db etc
+			$('#removeTeacher').modal('toggle');
+		}
+	}
+});
+
+$('.delete-this-course').click(function(){
 	//delete course and maybe redirect because after deletion the page will 404
 	$('#deleteCourse').modal('toggle');
 	
 });
-
-$('.cancel-this').click(function(){
+$('.cancel-this-course').click(function(){
 	
 	$('#deleteCourse').modal('toggle');
+});
+
+
+$('.remove-teacher-button').click(function(){
+	removeTeachervm.teacher = $(this).attr('id');
+	$('#removeTeacher').modal('show');
+});
+
+$('.delete-this-teacher').click(function(){
+	
+});
+
+$('.cancel-this-teacher').click(function(){
+	
+	$('#removeTeacher').modal('toggle');
 });
 
 function hasSubs(id){

@@ -118,7 +118,7 @@
                      <i class="fa fa-user"></i>{{teacher.name}} <span v-if="teacher.admin" class="admin">(Admin)</span>
                     </div>
                     <div class="col-xs-6 text-right" v-if="all_courses[courseIndex].admin">
-                      <span v-if="teacher.admin"></span><span v-else><a href="#"><i class="fa fa-times"></i>REMOVE</a></span>
+                      <span v-if="teacher.admin"></span><span v-else><a href="#" class="remove-teacher-button" id="{{teacher.id}}" ><i class="fa fa-times"></i>REMOVE</a></span>
                     </div>
                   </div>
                 </li>
@@ -231,13 +231,30 @@
         </div>
         <div class="modal-body text-center">
         <h4 class="regular-text">Are you sure you want to delete this course?</h4>
-        <button class="option delete-this"><i class="fa fa-trash"></i>Yes, delete this</button>
-        <button class="option cancel-this"><i class="fa fa-times"></i>No, CANCEL</button>
+        <button class="option delete-this-course"><i class="fa fa-trash"></i>Yes, delete this</button>
+        <button class="option cancel-this-course"><i class="fa fa-times"></i>No, CANCEL</button>
         </div>
       </div>
      </div>
     </div>
     <!--/DELETE COURSE-->
+     <!--REMOVE TEACHER-->
+     <div class="modal fade" id="removeTeacher" role="dialog" aria-labelledby="removeTeacherLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="removeTeacherLabel">Remove Teacher</h4>
+        </div>
+        <div class="modal-body text-center">
+        <h4 class="regular-text">Are you sure you want to remove {{teacherName}}?</h4>
+        <button class="option delete-this-teacher" v-on:click="removeTeacher"><i class="fa fa-trash"></i>Yes, remove them</button>
+        <button class="option cancel-this-teacher"><i class="fa fa-times"></i>No, CANCEL</button>
+        </div>
+      </div>
+     </div>
+    </div>
+    <!--/REMOVE TEACHER-->
   <!--/MODALS-->
   
   <!--SCRIPTS-->
