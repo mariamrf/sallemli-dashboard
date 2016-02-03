@@ -131,7 +131,7 @@ ul li a{
 	-webkit-transform: skewX(-20deg);
 }
 
-#your-submissions h3, #sheet-name h1, #done-details h1{
+#your-submissions h3, #sheet-name h1, #done-details h1, #teaching-title h1{
 	background-color: #331B17;
 	padding:0.3em;
 	transform: skewX(-20deg);
@@ -249,7 +249,7 @@ ul li a{
 	border:none;
 }
 
-#add-course h1{
+#add-course h1, #study-title h1{
 	background-color: #42787A;
 	padding:0.3em;
 	transform: skewX(-20deg);
