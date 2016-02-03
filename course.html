@@ -81,8 +81,8 @@
         <div class="row" v-if="all_courses[courseIndex].teacher">
           <div class="col-xs-12">
             <ul class="list-unstyled list-inline">
-                <li><button class="option" v-if="all_courses[courseIndex].admin"><i class="fa fa-plus"></i>Add Teacher</button></li>
-                <li><button class="option"><i class="fa fa-plus"></i>Add Assignment</button></li>
+                <li><button class="option" v-if="all_courses[courseIndex].admin"  data-toggle="modal" data-target="#addTeacher"><i class="fa fa-plus"></i>Add Teacher</button></li>
+                <li><button class="option"  data-toggle="modal" data-target="#addAssignment"><i class="fa fa-plus"></i>Add Assignment</button></li>
                 <li><button class="option"  data-toggle="modal" data-target="#editCourse"><i class="fa fa-pencil"></i>Edit Course</button></li>
                 <li><button class="option" v-if="all_courses[courseIndex].admin"  data-toggle="modal" data-target="#deleteCourse"><i class="fa fa-trash"></i>Delete Course</button></li>
             </ul>
@@ -238,6 +238,58 @@
      </div>
     </div>
     <!--/DELETE COURSE-->
+    <!--ADD ASSIGNMENT-->
+     <div class="modal fade" id="addAssignment" role="dialog" aria-labelledby="addAssignmentLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="addAssignmentLabel">Add Assignment</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form">
+            <div class="form-group">
+            <label for="sheet-name" class="control-label">Name:</label>
+            <input type="text" class="form-control" id="sheet-name">
+            </div>
+            <div class="form-group">
+             <label for="description-edit" class="control-label">Due date:</label>
+              <input type="date" class="form-control" id="sheet-due-date">
+            </div>
+            <label for="sheet-file" class="control-label">File:</label>
+            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+              <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+              <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input id="sheet-file" type="file" name="..."></span>
+              <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+          </div>
+            <button type="submit" id="add-assignment-button" class="option modal-btn">Add Assignment</button>
+        </form>
+        </div>
+      </div>
+     </div>
+    </div>
+    <!--/ADD ASSIGNMENT-->
+     <!--ADD TEACHER-->
+     <div class="modal fade" id="addTeacher" role="dialog" aria-labelledby="addTeacherLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="addTeacherLabel">Add Teacher</h4>
+        </div>
+        <div class="modal-body">
+        <form class="form">
+            <div class="form-group" id="email-form-group">
+            <label for="teacher-email" class="control-label">E-mail</label>
+            <input type="email" class="form-control" id="teacher-email">
+            </div>
+            <button type="submit" class="option modal-btn" id="add-teacher-button">Invite Teacher</button>
+        </form>
+        </div>
+      </div>
+     </div>
+    </div>
+    <!--/ADD TEACHER-->
      <!--REMOVE TEACHER-->
      <div class="modal fade" id="removeTeacher" role="dialog" aria-labelledby="removeTeacherLabel">
     <div class="modal-dialog modal-sm" role="document">

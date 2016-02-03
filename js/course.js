@@ -38,6 +38,7 @@ var coursevm = new Vue({
 		
 	}
 });
+
 var editcoursevm = new Vue({
 	el: '#editCourse',
 	computed: {
@@ -96,6 +97,28 @@ var removeTeachervm = new Vue({
 			coursevm.teachers.splice(this.teacherIndex, 1); //and remove from db etc
 			$('#removeTeacher').modal('toggle');
 		}
+	}
+});
+
+$('#add-assignment-button').click(function(e){
+	e.preventDefault(); 
+//check to see all is OK, name doesn't have to be in any way unique but it has to have a name, a due date and a file so all is required
+//date has to be in the future, but within the semester if semesters end up being a thing
+console.log("Front end developer here so..yeah..");
+$('#addAssignment').modal('toggle');
+});
+
+$('#add-teacher-button').click(function(e){
+	e.preventDefault();
+	var value = $('#teacher-email').val();
+	var emailRegex = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|me|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+	if(emailRegex.test(value)){
+		$('#email-form-group').removeClass('has-error');
+		$('#teacher-email').val('');
+		$('#addTeacher').modal('toggle');
+	}
+	else{
+		$('#email-form-group').addClass('has-error');
 	}
 });
 
