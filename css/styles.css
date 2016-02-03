@@ -363,3 +363,20 @@ ul li a{
 .one-sub:hover{
 	background-color: #F8E8B5;
 }
+
+.regular-text{
+	text-transform: none;
+}
+
+#deleteCourse button{
+	font-size: 1em;
+	transition: color 0.5s;
+	-webkit-transition: color 0.5s;
+}
+
+.delete-this{
+	color: #7f8c8d;
+}
+.cancel-this{
+	font-weight: bold;
+}

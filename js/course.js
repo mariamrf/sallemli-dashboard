@@ -31,6 +31,45 @@ var coursevm = new Vue({
 		
 	}
 });
+var modalvm = new Vue({
+	el: '#editCourse',
+	computed: {
+		name: function(){
+			if(coursevm.isAvailable)
+				return myCourses[coursevm.courseIndex].name;
+		},
+		description: function(){
+			if(coursevm.isAvailable)
+				return myCourses[coursevm.courseIndex].desc;
+		}
+	},
+	methods: {
+		editCourse: function(e){
+			e.preventDefault();
+			if(coursevm.isAvailable){
+				if(coursevm.all_courses[coursevm.courseIndex].teacher){
+					var name = $('#new-name').val();
+					var desc = $('#description-edit').val();
+					coursevm.all_courses[coursevm.courseIndex].name = name;
+					coursevm.all_courses[coursevm.courseIndex].desc = desc;
+					$('#editCourse').modal('toggle');
+				}
+			}
+		}
+	}
+});
+
+$('.delete-this').click(function(){
+	//delete course and maybe redirect because after deletion the page will 404
+	$('#deleteCourse').modal('toggle');
+	
+});
+
+$('.cancel-this').click(function(){
+	
+	$('#deleteCourse').modal('toggle');
+});
+
 function hasSubs(id){
 			var flag=false;
 				for(var j=0; j<allSubmissions.length; j++){
@@ -61,7 +100,3 @@ if(document.location.search.length != 0){ //why this doesn't work as expected I 
 }
 
 
-function checkMe(){
-	if(courseID) return true;
-	else return false;
-}
