@@ -20,7 +20,9 @@ var myCourses = [
 {id: 'IS02', subscribed: false, name: 'Database Systems', school: 'Faculty of Agriculture', desc: 'Make your databases',  students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}],teachers: [{id: '2362', name: 'Jane Doe', admin: true}, {id: '1632', name: 'R2D2', admin: false}, {id: '1923', name: 'Poe', admin: false}],teacher: true, admin: true, assignments: [{id: 1, name: 'Sheet 0', submissions: 20, due: moment("2016-01-05").fromNow(), date: '2016-01-05'}]},
 {id: 'ME01', subscribed: false, name: 'Stay Up Late', school: 'Life', desc:'You know you wanna', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{id: '1', name: 'Yoda', admin: true}, {id: '2362', name: 'Jane Doe', admin: false}], teacher: true},
 {id: 'ME02', subscribed: false, name: 'Fifth Course Added', school: 'Life', desc:'How to populate a list', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{id: '2362', name: 'Jane Doe', admin: true}, {id: '010010', name: 'Mr. Robot', admin: false}], teacher: true, admin: true},
-{id: 'ME03', subscribed: false, name: 'Sixth Course Added', school: 'Life', desc:'SEE?', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{id: '000', name: 'Old McDonald', admin: true}, {id: '2362', name: 'Jane Doe', admin: false}], teacher: true}
+{id: 'ME03', subscribed: false, name: 'Sixth Course Added', school: 'Life', desc:'SEE?', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{id: '000', name: 'Old McDonald', admin: true}, {id: '2362', name: 'Jane Doe', admin: false}], teacher: true},
+{id: 'ME04', subscribed: false, name: 'Empty Course', school: 'Life', desc:'SO MANY OPTIONS', students: [{id: '2361', name: 'Anakin Skywalker'}, {id: '6547', name: 'Mr. Moseby'}], teachers: [{id: '000', name: 'Old McDonald', admin: true}], teacher: false}
+
 ];
 
 var allStudents = [
