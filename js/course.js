@@ -72,6 +72,7 @@ var submitAssignmentvm = new Vue({
 	el: '#submitAssignment',
 	computed: {
 		unsubmitted: function(){
+			if(coursevm.isAvailable){
 			// JANE DOE IS STUDENT 2362
 			var sheets = []; //initial values because vue..
 			if(coursevm.all_courses[coursevm.courseIndex].assignments){
@@ -92,11 +93,13 @@ var submitAssignmentvm = new Vue({
 				return all;
 			
 			}
-			
+			}
 		},
 		hasUnsubs: function(){
+			if(coursevm.isAvailable){
 			if(this.unsubmitted && this.unsubmitted.length>0) return true;
 			else return false;
+		}
 		}
 	},
 	methods: {
@@ -115,6 +118,7 @@ var removeTeachervm = new Vue({
 	},
 	computed: {
 		teacherName: function(){
+			if(coursevm.isAvailable){
 			for(var i=0; i<coursevm.teachers.length; i++){
 				if(coursevm.isAvailable){
 					if(coursevm.teachers[i].id == this.teacher)
@@ -122,8 +126,10 @@ var removeTeachervm = new Vue({
 				}
 				
 			}
+		}
 		},
 		teacherIndex: function(){
+			if(coursevm.isAvailable){
 			for(var i=0; i<coursevm.teachers.length; i++){
 				if(coursevm.isAvailable){
 					if(coursevm.teachers[i].id == this.teacher)
@@ -132,12 +138,15 @@ var removeTeachervm = new Vue({
 				
 			}
 		}
+	}
 	},
 	methods: {
 		removeTeacher: function(){
+			if(coursevm.isAvailable){
 			coursevm.teachers.splice(this.teacherIndex, 1); //and remove from db etc
 			$('#removeTeacher').modal('toggle');
 		}
+	}
 	}
 });
 
@@ -189,6 +198,7 @@ $('.cancel-this-teacher').click(function(){
 });
 
 function hasSubs(id){
+	if(coursevm.isAvailable){
 			var flag=false;
 				for(var j=0; j<allSubmissions.length; j++){
 					if(allSubmissions[j].student.toLowerCase() == id && allSubmissions[j].course.toLowerCase()==courseID.toLowerCase())
@@ -196,6 +206,7 @@ function hasSubs(id){
 				}
 	
 			return flag;
+	}
 };
 
 $('.student-list').each(function(){
