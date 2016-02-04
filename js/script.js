@@ -21,7 +21,7 @@ $('.search').keypress(function (e) {
   if (e.which == 13) {
   	var value = $('.search').val();
   	if(value!=""){
-  		window.location.href = 'results.html?q=' + $('.search').val();
+  		window.location.href = 'results?q=' + $('.search').val();
   	}
    
 //<---search function
