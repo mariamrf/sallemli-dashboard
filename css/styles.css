@@ -47,6 +47,18 @@ ul li{
 	text-transform: uppercase;
 }
 
+.alerts-icon{
+background-color: red;
+display: inline-block;
+text-align: center;
+height:1.2em;
+padding-bottom: 0.2em;
+padding-right:0.2em;
+padding-left: 0.2em;
+font-size: 0.95em;
+border-radius: 0.3em;
+color:white;
+}
 .search{
 	border-radius: 1em;
 	border: 0.1em solid rgba(51, 27, 23, 0.5);

@@ -45,7 +45,7 @@ var menuvm = new Vue({
 	},
 	computed: {
 		messages: function(){
-			return 'Alerts (' + this.number_of_messages + ')'; 
+			return 'Alerts <div class="alerts-icon">' + this.number_of_messages + '</div>'; 
 		}
 	}
 });
@@ -62,7 +62,7 @@ var navmenuvm = new Vue({
 	},
 	computed: {
 		messages: function(){
-			return 'Alerts (' + this.number_of_messages + ')';
+			return 'Alerts <div class="alerts-icon">' + this.number_of_messages + '</div>';
 		}
 	}
 });
