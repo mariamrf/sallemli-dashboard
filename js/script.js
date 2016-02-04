@@ -34,8 +34,8 @@ $('.search').keypress(function (e) {
 var menuvm = new Vue({
 	el: '#top-menu',
 	data:{
-		number_of_messages: 3, //since last viewed. Last viewed is a variable with every user.
-		message_link: '#messages',
+		seen: lastSeen,
+		message_link: 'alerts',
 		items: [
 		{name: 'Jane Doe', url: 'profile', icon:'fa-user'},
 		{name: 'Add Course', url:'add-course', icon: 'fa-plus-square-o'},
@@ -45,15 +45,28 @@ var menuvm = new Vue({
 	},
 	computed: {
 		messages: function(){
-			return 'Alerts <div class="alerts-icon">' + this.number_of_messages + '</div>'; 
+			if(this.number_of_messages==0) return 'Alerts';
+			else return 'Alerts <div class="alerts-icon">' + this.number_of_messages + '</div>'; 
+		},
+		number_of_messages: function(){
+			var count=0;
+			for(var i=0; i<allMessages.length; i++){ //this means this will only change on refresh. Will fix that.
+				if(allMessages[i].date>this.seen) count++;
+			}
+			for(var i=0; i<allRequests.length; i++){ //this means this will only change on refresh. Will fix that.
+				if(allRequests[i].date>this.seen) count++;
+			}
+			return count;
+
 		}
+
 	}
 });
 var navmenuvm = new Vue({
 	el: '#NavMenu',
 	data:{
-		number_of_messages: 3,
-		message_link: '#messages',
+		seen: lastSeen,
+		message_link: 'alerts',
 		items: [
 		{name: 'Jane Doe', url: 'profile', icon:'fa-user'},
 		{name: 'Add Course', url:'add-course', icon: 'fa-plus-square-o'}//,
@@ -62,7 +75,19 @@ var navmenuvm = new Vue({
 	},
 	computed: {
 		messages: function(){
-			return 'Alerts <div class="alerts-icon">' + this.number_of_messages + '</div>';
+			if(this.number_of_messages==0) return 'Alerts';
+			else return 'Alerts <div class="alerts-icon">' + this.number_of_messages + '</div>'; 
+		},
+		number_of_messages: function(){
+			var count=0;
+			for(var i=0; i<allMessages.length; i++){ //this means this will only change on refresh. Will fix that.
+				if(allMessages[i].date>this.seen) count++;
+			}
+			for(var i=0; i<allRequests.length; i++){ //this means this will only change on refresh. Will fix that.
+				if(allRequests[i].date>this.seen) count++;
+			}
+			return count;
+
 		}
 	}
 });

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sallemli</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery.qtip.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,600' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+ </head>
+  <body>
+<!--OFF CANVAS NAV-->
+  <nav id="NavMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas hidden-md hidden-lg" role="navigation">
+  <ul class="nav navmenu-nav">
+    <li class="active"><a href="index.html">Home</a></li>
+      <li v-for="item in items"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+      <li><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{{messages}}}</a></li>
+      <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+  </ul>
+</nav>
+<!--/OFF CANVAS NAV-->
+  
+  <!--TOP MENU-->
+  <div class="container-fluid" id="top-menu">
+  <div class="col-xs-12 col-md-10">
+    <ul class="list-inline">
+    <li> <button  data-toggle="offcanvas" data-target="#NavMenu" data-canvas="body" class="navmenu-toggle hidden-md hidden-lg">
+    <i class="fa fa-bars"></i><span class="title-nav">Sallem.li</span>
+  </button></li>
+      <li class="title hidden-xs hidden-sm"><a href="index.html">Sallem.li</a></li>
+      <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
+    <li class="hidden-xs hidden-sm"><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{{messages}}}</a></li>
+
+    </ul>
+    </div>
+    <div class="col-md-2 text-right  hidden-xs hidden-sm">
+      <ul class="list-inline logout"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
+    </div>
+  </div>
+  <!--/TOP MENU-->
+  <div class="container" id="alerts-container">
+   <!--NEW MESSAGES-->
+  <div class="col-xs-12 col-md-6" id="all-messages-details">
+     <div class="row">
+      <div class="col-xs-12" id="all-messages-title">
+        <h1><div class="rev-todo text-center"><i class="fa fa-envelope"></i>Messages</div></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="list-unstyled" v-if="hasMessages">
+          <li v-for="message in messages | orderBy 'date' -1" class="one-message">
+          <div class="message-details">
+          
+            <div class="row">
+              <div class="col-xs-12 col-md-8">
+                <span class="alert-header"><i class="fa fa-asterisk" style="color: red;" v-if="isNew(message)"></i><i class="fa fa-angle-right" v-else></i><h4>{{message.sender.name}} [{{message.sender.id}}]</h4></span>
+              </div>
+              <div class="col-xs-12 col-md-4 message-course">
+               COURSE: <a href="course?{{message.course}}">{{message.course}}</a>
+              </div>
+              <div class="col-xs-12 message-date">
+              {{message.date}}
+            </div>
+              <div class="col-xs-12">
+                <span class="show-message modal-btn text-left"><i class="fa fa-angle-double-right"></i>Show message </span>
+                </div>
+            </div>
+              <div class="row message-content">
+                <div class="col-xs-12">
+                  <h5>{{message.subject}}</h5>
+                  <p>{{message.message}}</p>
+                 <span class="message-reply" v-if="message.email">REPLY TO: <a href="mailto:{{message.email}}">{{message.email}}</a></span>
+                </div>
+                
+              </div>
+            </div>
+          </li>
+        </ul>
+        <h4 v-else>You don't have any messages, yet!</h4>
+      </div>
+    </div>
+  </div>
+  <!--/NEW MESSAGES-->
+  <!--REQUESTS-->
+  <div class="col-xs-12 col-md-6" id="all-teacher-requests-details">
+     <div class="row">
+      <div class="col-xs-12" id="all-teacher-requests-title">
+        <h1><div class="rev-todo text-center"><i class="fa fa-coffee"></i>Requests</div></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="list-unstyled" v-show="hasRequests">
+          <li v-for="request in requests | orderBy 'date' -1" class="one-request">
+            <div class="row">
+              <div class="col-xs-12 alert-header">
+                <i class="fa fa-asterisk" style="color: red;" v-if="isNew(request)"></i><i class="fa fa-angle-right" v-else></i>
+                <a href="mailto:{{request.requester.email}}">{{request.requester.name}}</a> wants to be added as a teacher to <a href="course?{{request.course.id}}">{{request.course.name}}</a>.
+              </div>
+              <div class="col-xs-12 text-right request-response">
+                <button class="option" v-on:click="accept(request.$index)"><i class="fa fa-check-circle fa-lg"></i>ACCEPT</button>
+                <button class="option" v-on:click="dismiss(request.$index)"><i class="fa fa-times fa-lg"></i>DISMISS</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <h4 v-else>You don't have any requests right now!</h4>
+      </div>
+    </div>
+  </div>
+  <!--/REQUESTS-->
+  </div>
+  <!--SCRIPTS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.qtip.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/alerts.js"></script>
+    <script src="js/jasny-bootstrap.min.js"></script>
+  <!--/SCRIPTS-->
+  </body>
+</html>

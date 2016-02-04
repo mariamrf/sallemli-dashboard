@@ -136,14 +136,14 @@ ul li a{
 	-webkit-transform: skewX(-20deg);
 }
 
-#your-courses h3, #find-course h1, #submitted-title h3{
+#your-courses h3, #find-course h1, #submitted-title h3, #all-messages-title h1{
 	background-color: #409C97;
 	padding:0.3em;
 	transform: skewX(-20deg);
 	-webkit-transform: skewX(-20deg);
 }
 
-#your-submissions h3, #sheet-name h1, #done-details h1, #teaching-title h1{
+#your-submissions h3, #sheet-name h1, #done-details h1, #teaching-title h1, #all-teacher-requests-title h1{
 	background-color: #331B17;
 	padding:0.3em;
 	transform: skewX(-20deg);
@@ -391,4 +391,85 @@ ul li a{
 }
 .cancel-this-course, .cancel-this-teacher{
 	font-weight: bold;
+}
+
+.message-course{
+	color: #409C97;
+}
+@media (min-width: 992px){
+	.message-course{
+		text-align: right;
+	}
+}
+.one-message{
+	padding:0.5em;
+	text-transform: uppercase;
+	border-bottom: 0.1em solid black;
+	padding-top:2em;
+}
+
+.one-message:hover{
+	background-color: rgba(189, 195, 199,0.3);
+}
+
+.one-message h4{
+	display: inline;
+	font-weight: bold;
+}
+
+
+.rev-message{
+	transform: skewX(10deg);
+	-webkit-transform: skewX(10deg);
+}
+
+.show-message{
+	background-color: transparent;
+	border:none;
+	font-size:0.9em;
+	margin-left: 1.5em;
+}
+
+.message-content{
+	text-transform: none;
+	margin-left: .3em;
+	display: none;
+}
+
+.message-content h5{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.message-date{
+	opacity: 0.9;
+	text-transform: uppercase;
+	font-size: .8em;
+	margin-left: 1.5em;
+}
+
+.message-reply{
+	text-transform: uppercase;
+	font-weight: bold;
+	background-color: transparent;
+	border:none;
+	color: #331B17;
+	font-size: 0.8em;
+	transition: color 0.5s;
+	-webkit-transition: color 0.5s;
+}
+
+.one-request{
+	padding-top: .5em;
+	margin-bottom: .5em;
+	font-size: 1.1em;
+	text-transform: none;
+
+}
+
+.request-response button{
+	font-size: 0.8em;
+	color: #331B17;
+	transition: color 0.5s;
+	-webkit-transition: color 0.5s;
 }
