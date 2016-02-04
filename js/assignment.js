@@ -58,8 +58,21 @@ var sheetvm = new Vue({
 	}
 });
 
+$('#submit-assignment-button').click(function(e){
+e.preventDefault();
+//validate and send to db/backend
+$('#submitAssignment').modal('toggle');
+});
 
-
+$('.delete-this-assignment').click(function(){
+	//delete assignment and maybe redirect because after deletion the page will 404
+	$('#deleteAssignment').modal('toggle');
+	
+});
+$('.cancel-this-assignment').click(function(){
+	
+	$('#deleteAssignment').modal('toggle');
+});
 
 if(query==undefined ||courseID == undefined || courseID == "" || assignmentID==undefined || assignmentID==""|| Number.isNaN(assignmentID)|| !sheetvm.isAvailable){
 	$('#sheet-container').load('404.html');
