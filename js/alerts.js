@@ -5,7 +5,7 @@ $(document).ready(function(){
 	menuvm.seen = lastSeen;
 	navmenuvm.seen = lastSeen;
 });
-$('#alerts-container a').attr('target', 'blank');
+$('#alerts-container a').attr('target', '_blank');
 var alertsvm = new Vue({
 	el: '#alerts-container',
 	data: {
