@@ -65,6 +65,7 @@ color:white;
 	width:25em;
 	overflow: auto;
 	padding:0.5em;
+	padding-left: 1em;
 	margin: none;
 }
 
@@ -92,12 +93,11 @@ color:white;
 	text-transform: none;
 	padding-bottom: 0.5em;
 	padding-top: 0.5em;
+	font-size: 1.1em;
 
 }
 
-.alert-item i{
-	margin-right: 1em;
-}
+
 #alerts-dropdown-button:focus{
 	outline: none;
 	
@@ -542,7 +542,7 @@ ul li a{
 	color: #42787A;
 }
 
-.one-alert i{
+.one-alert i, .alert-item i{
 	font-size: 0.5em;
 	margin-right: 1em;
 }
