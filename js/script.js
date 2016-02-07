@@ -35,6 +35,7 @@ var menuvm = new Vue({
 	el: '#top-menu',
 	data:{
 		seen: lastSeen,
+		unfiltered_alerts: alerts,
 		message_link: 'alerts',
 		items: [
 		{name: 'Jane Doe', url: 'profile', icon:'fa-user'},
@@ -44,6 +45,17 @@ var menuvm = new Vue({
 		]
 	},
 	computed: {
+		all_alerts: function(){
+			var res = [];
+			if(this.unfiltered_alerts>10){
+				for(var i=0; i<10; i++){
+					res.push(this.unfiltered_alerts[i]);
+				}
+				return res;
+			}
+			else return this.unfiltered_alerts;
+			
+		},
 		messages: function(){
 			if(this.number_of_messages==0) return 'Alerts';
 			else return 'Alerts <div class="alerts-icon">' + this.number_of_messages + '</div>'; 
@@ -94,3 +106,8 @@ var navmenuvm = new Vue({
 
 
 
+$('#alerts-dropdown-button').click(function(){
+	lastSeen = new moment();
+	menuvm.seen = lastSeen;
+	navmenuvm.seen = lastSeen;
+})

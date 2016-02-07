@@ -59,6 +59,71 @@ font-size: 0.95em;
 border-radius: 0.3em;
 color:white;
 }
+
+#alerts-dropdown-menu{
+	max-height:30em;
+	width:25em;
+	overflow: auto;
+	padding:0.5em;
+	margin: none;
+}
+
+#alerts-dropdown-button{
+	background-color: transparent;
+	text-transform: uppercase;
+	border-radius: 0;
+	color: #42787A;
+	padding:none;
+	border:none;
+	margin:none;
+	transition: border 0.1s;
+	-webkit-transition: border 0.1s;
+}
+
+#alerts-dropdown-button:hover{
+	background-color: transparent;
+	border-bottom: 0.2em solid black;
+	border-radius: 0;
+	padding:none;
+	margin:none;
+}
+
+.alert-item{
+	text-transform: none;
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+
+}
+
+.alert-item i{
+	margin-right: 1em;
+}
+#alerts-dropdown-button:focus{
+	outline: none;
+	
+}
+
+
+
+#alerts-dropdown-menu ul li{
+	margin-right: 0px !important;
+}
+
+
+.alert-item:hover{
+background-color: #ecf0f1;
+}
+
+.see-all{
+	text-align: center;
+	font-weight: bold;
+}
+#alerts-dropdown-menu li a:hover{
+background-color: none;
+border-bottom: none !important;
+}
+
+
 .search{
 	border-radius: 1em;
 	border: 0.1em solid rgba(51, 27, 23, 0.5);
@@ -136,7 +201,7 @@ ul li a{
 	-webkit-transform: skewX(-20deg);
 }
 
-#your-courses h3, #find-course h1, #submitted-title h3, #all-messages-title h1{
+#your-courses h3, #find-course h1, #submitted-title h3, #all-messages-title h1, #all-alerts-title h1{
 	background-color: #409C97;
 	padding:0.3em;
 	transform: skewX(-20deg);
@@ -459,17 +524,35 @@ ul li a{
 	-webkit-transition: color 0.5s;
 }
 
-.one-request{
+.one-request, .one-alert{
 	padding-top: .5em;
 	margin-bottom: .5em;
 	font-size: 1.1em;
 	text-transform: none;
 
 }
+.one-alert a{
+	color: #331B17;
+	transition: color 0.5s;
+	-webkit-transition: color 0.5s;
+}
 
+.one-alert a:hover{
+	text-decoration: none;
+	color: #42787A;
+}
+
+.one-alert i{
+	font-size: 0.5em;
+	margin-right: 1em;
+}
 .request-response button{
 	font-size: 0.8em;
 	color: #331B17;
 	transition: color 0.5s;
 	-webkit-transition: color 0.5s;
+}
+
+.alert-date{
+	color: rgba(0,0,0,0.5);
 }

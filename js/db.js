@@ -53,3 +53,23 @@ var allRequests = [
 {id: 2, course: {id: 'ME02', name: 'Fifth Course Added'}, requester: {email: 'anakin@lightside.me', name: 'Anakin Skywalker'}, date: moment('2015-12-08 24:00:00.000')}
 ]
 
+var alerts = []; //type (for css), link, text, date, new ? true : false
+function populateAlerts(){
+	//type: requests. //suggestion: show count of requests instead of individual ones
+	for(var i=0; i<allRequests.length; i++){
+		var novel; //the isNew part should be the only thing that has to be calculated client-side and since we won't be using this particular function it can be reactive
+		if(allRequests[i].date>lastSeen) novel = true;
+		else novel = false;
+		alerts.push({type: 'R', link: 'requests', date: allRequests[i].date, text: allRequests[i].requester.name + ' requested addition to ' + allRequests[i].course.id, isNew: novel});
+	}
+
+	for(var i=0; i<allMessages.length; i++){
+		var novel;
+		if(allMessages[i].date>lastSeen) novel = true;
+		else novel = false;
+		alerts.push({type: 'M', link: 'course?'+allMessages[i].course, date: allMessages[i].date, text: allMessages[i].sender.name + ' sent a message regarding ' + allMessages[i].course, isNew: novel});
+	}
+
+
+}
+populateAlerts();

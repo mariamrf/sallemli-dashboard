@@ -32,8 +32,24 @@
   </button></li>
       <li class="title hidden-xs hidden-sm"><a href="index.html">Sallem.li</a></li>
       <li v-for="item in items" class="hidden-xs hidden-sm"><a href="{{item.url}}"><i class="fa {{item.icon}}"></i>{{item.name}}</a></li>
-      <li class="hidden-xs hidden-sm"><a href="{{message_link}}"><i class="fa fa-paper-plane-o"></i>{{{messages}}}</a></li>
-    </ul>
+ <!--ALERTS DROPDOWN-->
+    <li class="hidden-xs hidden-sm">
+      <div class="dropdown" id="alerts-dropdown">
+        <button type="button" id="alerts-dropdown-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <i class="fa fa-paper-plane-o"></i> {{{messages}}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="alerts-dropdown-button" id="alerts-dropdown-menu">
+        <ul class="list-unstyled">
+          <li class="alert-item" v-for="alert in all_alerts | orderBy 'date' -1"><i class="fa fa-circle" style="color: #F0340F;" v-if="alert.isNew"></i><i class="fa fa-circle-o" v-else></i><a href="{{alert.link}}">{{alert.text}}.</a></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li role="separator" class="divider"></li>
+          <li class="see-all"><a href="{{message_link}}">See All Alerts</a></li>
+        </ul>
+        </div>
+      </div>
+    </li>
+    <!--/ALERTS DROPDOWN-->     </ul>
     </div>
     <div class="col-md-4 text-right   hidden-xs hidden-sm">
       <ul class="list-inline logout"><li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li></ul>
