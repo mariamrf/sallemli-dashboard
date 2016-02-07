@@ -1,10 +1,5 @@
 //Vue.config.debug = true;
 
-$(document).ready(function(){
-	lastSeen = moment();
-	menuvm.seen = lastSeen;
-	navmenuvm.seen = lastSeen;
-});
 
 var alertsvm = new Vue({
 	el: '#alerts-container',
