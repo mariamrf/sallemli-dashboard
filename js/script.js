@@ -63,7 +63,7 @@ var menuvm = new Vue({
 		number_of_messages: function(){
 			var count=0;
 			for(var i=0; i<this.unfiltered_alerts.length; i++){
-				if(this.unfiltered_alerts[i].isNew) count++;
+				if(this.unfiltered_alerts[i].date > this.seen) count++;
 			}
 			return count;
 
