@@ -10,7 +10,8 @@ else{
 var coursevm = new Vue({
 	el: '#course-details',
 	data: {
-		all_courses: myCourses //until we add more not-my-courses
+		all_courses: myCourses, //until we add more not-my-courses
+		filtered: false
 	},
 	computed: {
 		courseIndex: function(){
@@ -36,10 +37,58 @@ var coursevm = new Vue({
 		hasAssignments: function(){
 			if(this.all_courses[this.courseIndex].assignments && this.all_courses[this.courseIndex].assignments.length>0) return true;
 			else return false;
+		},
+		messages: function(){
+			var res = [];
+			for(var i=0; i<allMessages.length; i++){
+				if(allMessages[i].course.toLowerCase() == courseID.toLowerCase())
+					res.push(allMessages[i]);
+			}
+			return res;
+		},
+		hasMessages: function(){
+			if(this.messages && this.messages.length>0)
+				return true;
+			else
+				return false;
+		},
+		hiddenResolved: function(){
+			if(this.filtered) return true;
+			else return false;
+		}
+	},
+	methods: {
+		isNew: function(message){
+			if(!message.seen) return true;
+			else return false;
+		},
+		markSeen: function(message){
+			if(!message.seen) message.seen = true; //and do this to the actual db
+		},
+		resolve: function(message){
+			message.resolved = !message.resolved;
+			if(this.filtered && message.resolved){
+				setTimeout(filterResolved, 1000); //wait until class is changed, also good for ux so they don't click on it and then lose the message
+			}
+		},
+		togglehide: function(){
+			this.filtered = !this.filtered;
+			filterResolved();
+			
 		}
 	}
 });
 
+function filterResolved(){
+	$('.one-message').each(function(){
+				if($(this).hasClass('resolved-true') && coursevm.filtered) $(this).css('display', 'none');
+				else if($(this).hasClass('resolved-true') && !coursevm.filtered) $(this).css('display', 'block');
+	});
+}
+
+$('a[href^="#"]').click(function(e){
+	e.preventDefault();
+});
 var editcoursevm = new Vue({
 	el: '#editCourse',
 	computed: {
@@ -148,6 +197,21 @@ var removeTeachervm = new Vue({
 		}
 	}
 	}
+});
+
+$('.one-message').click(function(){
+	if($(this).hasClass('expanded')){
+		$(this).removeClass('expanded');
+		$('.message-content', this).slideUp();
+		$('.show-message', this).html('<i class="fa fa-angle-double-right"></i>Show message');
+
+	}
+	else{
+		$(this).addClass('expanded');
+		$('.message-content', this).slideDown();
+		$('.show-message', this).html('<i class="fa fa-angle-double-down"></i>Hide message');
+	}
+	
 });
 
 $('#add-assignment-button').click(function(e){

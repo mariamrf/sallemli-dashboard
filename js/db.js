@@ -43,8 +43,8 @@ var allSubmissions =[
 var lastSeen = moment('2013-02-08 24:00:00.000'); 
 
 var allMessages = [
-{id: 1, date: moment('2014-02-08 24:00:00.000'), course: 'IS02', sender: {id: '2361', name: 'Anakin Skywalker'}, subject: 'Grading Issue', message: "I got a 58/60 even though the force is with me. I don't want to have to resort to methods of the dark side, but I will.", email: 'darth@vader.me'},
-{id: 2, date: moment('2012-02-08 24:00:00.000'), course: 'ME02', sender: {id: '2457', name: 'Daffy Duck'}, subject: 'No Assignments?', message: "Does this course have no assignments at all??"}
+{id: 1, seen: false, resolved: false, date: moment('2014-02-08 24:00:00.000'), course: 'IS02', sender: {id: '2361', name: 'Anakin Skywalker'}, subject: 'Grading Issue', message: "I got a 58/60 even though the force is with me. I don't want to have to resort to methods of the dark side, but I will.", email: 'darth@vader.me'},
+{id: 2, seen: true, resolved: false, date: moment('2012-02-08 24:00:00.000'), course: 'ME02', sender: {id: '2457', name: 'Daffy Duck'}, subject: 'No Assignments?', message: "Does this course have no assignments at all??"}
 
 ]
 

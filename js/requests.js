@@ -28,25 +28,9 @@ var alertsvm = new Vue({
 	}
 });
 
-/*$('.one-message').each(function(){
-	if($('.alert-header i', this).hasClass('fa-asterisk')) $(this).css('border-color', 'red');
-});
-$('.one-message').click(function(){
-	if($(this).hasClass('expanded')){
-		$(this).removeClass('expanded');
-		$('.message-content', this).slideUp();
-		$('.show-message', this).html('<i class="fa fa-angle-double-right"></i>Show message');
 
-	}
-	else{
-		$(this).addClass('expanded');
-		$('.message-content', this).slideDown();
-		$('.show-message', this).html('<i class="fa fa-angle-double-down"></i>Hide message');
-	}
 	
-});
-	
-*/
+
 
 $('.one-request').each(function(){
 	if($('.alert-header i', this).hasClass('fa-asterisk')) $(this).css('border-color', 'red'); //two separate just in case we change the icons or something
