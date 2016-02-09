@@ -608,6 +608,15 @@ ul li a{
 	-webkit-transition: color 0.5s;
 }
 
+@media(max-width: 991px){
+	.one-message{
+		padding-right:2em;
+	}
+	.message-reply-area{
+		width:95%;
+	}
+}
+
 .one-request, .one-alert{
 	padding-top: .5em;
 	margin-bottom: .5em;
