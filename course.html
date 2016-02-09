@@ -222,7 +222,7 @@
          </span>
        </div>
        <div class="col-xs-12">
-       <span class="hide-resolved">
+       <span class="hide-resolved" v-if="hasMessages">
         <a href="#" v-on:click="togglehide">
          <i class="fa fa-check-square-o" v-if="hiddenResolved"></i><i class="fa fa-square-o" v-else></i>Hide resolved
          </a>
