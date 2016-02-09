@@ -386,7 +386,7 @@ ul li a{
 }
 @media (min-width: 992px){
 	.one-message .col-xs-12{
-		padding-right: 0;
+		padding-right: 0.2;
 	}
 
 	.one-message{
@@ -416,7 +416,7 @@ ul li a{
 	#all-messages-details{
 		padding-right: 0;
 		padding-top: 1em;
-		left:5%;
+		left:4.5%;
 		border-left: 0.1em solid rgba(0,0,0,0.2);
 		min-height: 100vh;
 	}
@@ -545,6 +545,7 @@ ul li a{
 }
 }
 
+
 .one-message h4{
 	display: inline;
 	font-weight: bold;
@@ -574,20 +575,28 @@ ul li a{
 
 .message-content{
 	text-transform: none;
-	margin-left: .3em;
+	margin-left: 1.5em;
 	display: none;
+
 }
 
+.actual-single-message{
+	white-space: pre-wrap;
+}
 .message-content h5{
 	font-size: 1.2em;
 	font-weight: bold;
 }
 
-.message-date{
+.message-date, .message-sender{
 	opacity: 0.9;
 	text-transform: uppercase;
 	font-size: .8em;
-	margin-left: 1.5em;
+	text-align: right;
+}
+
+.message-sender{
+	font-weight: bold;
 }
 
 .message-reply{
@@ -595,8 +604,6 @@ ul li a{
 	font-weight: bold;
 	background-color: transparent;
 	border:none;
-	color: #331B17;
-	font-size: 0.8em;
 	transition: color 0.5s;
 	-webkit-transition: color 0.5s;
 }

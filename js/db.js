@@ -43,8 +43,8 @@ var allSubmissions =[
 var lastSeen = moment('2013-02-08 24:00:00.000'); 
 
 var allMessages = [
-{id: 1, seen: false, resolved: false, date: moment('2014-02-08 24:00:00.000'), course: 'IS02', sender: {id: '2361', name: 'Anakin Skywalker'}, subject: 'Grading Issue', message: "I got a 58/60 even though the force is with me. I don't want to have to resort to methods of the dark side, but I will.", email: 'darth@vader.me'},
-{id: 2, seen: true, resolved: false, date: moment('2012-02-08 24:00:00.000'), course: 'ME02', sender: {id: '2457', name: 'Daffy Duck'}, subject: 'No Assignments?', message: "Does this course have no assignments at all??"}
+{id: 1, seen: false, resolved: false,  course: 'IS02', sender: {id: '2361', name: 'Anakin Skywalker'}, subject: 'Grading Issue', thread: [{date: moment('2014-02-08 24:00:00.000'), message: "I got a 58/60 even though the force is with me. I don't want to have to resort to methods of the dark side, but I will.", sender: 'Anakin Skywalker'}], email: 'darth@vader.me'},
+{id: 2, seen: true, resolved: false, course: 'IS02', sender: {id: '2457', name: 'Daffy Duck'}, subject: 'No Assignments?', thread: [{date: moment('2012-02-08 24:00:00.000'), message: "Does this course have no assignments at all??", sender: 'Daffy Duck'}]}
 
 ]
 
@@ -64,10 +64,12 @@ function populateAlerts(){
 	}
 
 	for(var i=0; i<allMessages.length; i++){
+		for(var j=0; j<allMessages[i].thread.length; j++){
 		var novel;
-		if(allMessages[i].date>lastSeen) novel = true;
+		if(allMessages[i].thread[j].date>lastSeen) novel = true; //assumes all messages in allMessages are for the logged in user and doesn't account for said user's replies (replies would still notify using this function, but again this is a mock db and not the actual backend)
 		else novel = false;
-		alerts.push({type: 'M', link: 'course?'+allMessages[i].course, date: allMessages[i].date, text: allMessages[i].sender.name + ' sent a message regarding ' + allMessages[i].course, isNew: novel});
+		alerts.push({type: 'M', link: 'course?'+allMessages[i].course, date: allMessages[i].thread[j].date, text: allMessages[i].thread[j].sender + ' sent a message regarding ' + allMessages[i].course, isNew: novel});
+		}
 	}
 
 

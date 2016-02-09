@@ -11,7 +11,8 @@ var coursevm = new Vue({
 	el: '#course-details',
 	data: {
 		all_courses: myCourses, //until we add more not-my-courses
-		filtered: false
+		filtered: false,
+		reply: ""
 	},
 	computed: {
 		courseIndex: function(){
@@ -75,14 +76,29 @@ var coursevm = new Vue({
 			this.filtered = !this.filtered;
 			filterResolved();
 			
+		},
+		replyNow: function(message){
+			var r = message.reply;
+			if(r && r.length>0){
+				message.thread.push({date: moment(), sender: 'Jane Doe', message: r}); //and add to db
+			}
 		}
 	}
 });
 
+$('.message-reply').click(function(){
+	var par = $(this).parent().parent();
+	$('.message-reply-area', par).val('');
+});
+
 function filterResolved(){
 	$('.one-message').each(function(){
-				if($(this).hasClass('resolved-true') && coursevm.filtered) $(this).css('display', 'none');
-				else if($(this).hasClass('resolved-true') && !coursevm.filtered) $(this).css('display', 'block');
+				if($(this).hasClass('resolved-true') && coursevm.filtered){
+					$(this).css('display', 'none');
+				}
+				else if($(this).hasClass('resolved-true') && !coursevm.filtered){
+					$(this).css('display', 'block');
+				}
 	});
 }
 
@@ -199,17 +215,18 @@ var removeTeachervm = new Vue({
 	}
 });
 
-$('.one-message').click(function(){
-	if($(this).hasClass('expanded')){
-		$(this).removeClass('expanded');
-		$('.message-content', this).slideUp();
-		$('.show-message', this).html('<i class="fa fa-angle-double-right"></i>Show message');
+$('.show-message-all').click(function(){
+	var leparent = $(this).parent();
+	if(leparent.hasClass('expanded')){
+		leparent.removeClass('expanded');
+		$('.message-content', leparent).slideUp();
+		$('.show-message', leparent).html('<i class="fa fa-angle-double-right"></i>Show message');
 
 	}
 	else{
-		$(this).addClass('expanded');
-		$('.message-content', this).slideDown();
-		$('.show-message', this).html('<i class="fa fa-angle-double-down"></i>Hide message');
+		leparent.addClass('expanded');
+		$('.message-content', leparent).slideDown();
+		$('.show-message', leparent).html('<i class="fa fa-angle-double-down"></i>Hide message');
 	}
 	
 });

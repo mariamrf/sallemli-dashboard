@@ -62,11 +62,8 @@ var menuvm = new Vue({
 		},
 		number_of_messages: function(){
 			var count=0;
-			for(var i=0; i<allMessages.length; i++){ //this means this will only change on refresh. Will fix that.
-				if(allMessages[i].date>this.seen) count++;
-			}
-			for(var i=0; i<allRequests.length; i++){ //this means this will only change on refresh. Will fix that.
-				if(allRequests[i].date>this.seen) count++;
+			for(var i=0; i<this.unfiltered_alerts.length; i++){
+				if(this.unfiltered_alerts[i].isNew) count++;
 			}
 			return count;
 
