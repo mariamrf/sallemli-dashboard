@@ -81,10 +81,20 @@ var coursevm = new Vue({
 			var r = message.reply;
 			if(r && r.length>0){
 				message.thread.push({date: moment(), sender: 'Jane Doe', message: r}); //and add to db
+				setTimeout(linkifyMessages, 50);
 			}
 		}
 	}
 });
+
+function linkifyMessages(){
+	$('.one-message').linkify({
+	target: "_blank"
+});
+}
+
+linkifyMessages();
+
 
 $('.message-reply').click(function(){
 	var par = $(this).parent().parent();
