@@ -128,8 +128,7 @@ var editcoursevm = new Vue({
 		}
 	},
 	methods: {
-		editCourse: function(e){
-			e.preventDefault();
+		editCourse: function(){
 			if(coursevm.isAvailable){
 				if(coursevm.all_courses[coursevm.courseIndex].teacher){
 					var name = $('#new-name').val();
@@ -142,7 +141,9 @@ var editcoursevm = new Vue({
 		}
 	}
 });
-
+$('#editCourseSubmit').click(function(){
+	
+});
 var submitAssignmentvm = new Vue({
 	el: '#submitAssignment',
 	computed: {
