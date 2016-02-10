@@ -47,7 +47,7 @@ var coursevm = new Vue({
 		replyNow: function(message){
 			var r = message.reply;
 			if(r && r.length>0){
-				message.thread.push({date: moment(), sender: 'Jane Doe', message: r}); //and add to db
+				message.thread.push({date: moment(), sender: 'Jane Doe', message: r, seen: true}); //and add to db. SEEN is relative to the logged in user
 				setTimeout(linkifyMessages, 50);
 			}
 		}
