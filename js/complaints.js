@@ -27,11 +27,17 @@ var coursevm = new Vue({
 	},
 	methods: {
 		isNew: function(message){
-			if(!message.seen) return true;
-			else return false;
+			for(var i=0; i<message.thread.length; i++){
+				if(!message.thread[i].seen) return true;
+			}
+			return false; //if all of this doesn't return
 		},
 		markSeen: function(message){
-			if(!message.seen) message.seen = true; //and do this to the actual db
+			if(this.isNew(message)){
+				for(var i=0; i<message.thread.length; i++){
+					if(!message.thread[i].seen) message.thread[i].seen = true;
+				}
+			}
 		},
 		togglehide: function(){
 			this.filtered = !this.filtered;

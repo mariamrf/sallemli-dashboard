@@ -43,14 +43,14 @@ var allSubmissions =[
 var lastSeen = moment('2013-02-08 24:00:00.000'); 
 
 var allMessages = [
-{id: 1, seen: false, resolved: false,  course: 'IS02', sender: {id: '2361', name: 'Anakin Skywalker'}, subject: 'Grading Issue', thread: [{date: moment('2014-02-08 24:00:00.000'), message: "I got a 58/60 even though the force is with me. I don't want to have to resort to methods of the dark side, but I will.", sender: 'Anakin Skywalker'}], email: 'darth@vader.me'},
-{id: 2, seen: true, resolved: false, course: 'IS02', sender: {id: '2457', name: 'Daffy Duck'}, subject: 'No Assignments?', thread: [{date: moment('2012-02-08 24:00:00.000'), message: "Does this course have no assignments at all??", sender: 'Daffy Duck'}]}
+{id: 1, resolved: false,  course: 'IS02', sender: {id: '2361', name: 'Anakin Skywalker'}, subject: 'Grading Issue', thread: [{date: moment('2014-02-08 24:00:00.000'), message: "I got a 58/60 even though the force is with me. I don't want to have to resort to methods of the dark side, but I will.", sender: 'Anakin Skywalker', seen: false}], email: 'darth@vader.me'},
+{id: 2, resolved: false, course: 'IS02', sender: {id: '2457', name: 'Daffy Duck'}, subject: 'No Assignments?', thread: [{date: moment('2012-02-08 24:00:00.000'), message: "Does this course have no assignments at all??", sender: 'Daffy Duck', seen: true}]}
 
 ]
 
 var allComplaints = [
-{id: 3, seen: false, resolved: false,  course: 'AN01', subject: 'This Sucks', thread: [{date: moment('2014-02-08 24:00:00.000'), message: "I can't understand a single word!", sender: 'Jane Doe'}]},
-{id: 4, seen: true, resolved: true, course: 'CS04', subject: 'I need less grades', thread: [{date: moment('2012-02-08 24:00:00.000'), message: "I have waaaay too many grades", sender: 'Jane Doe'}, {date: moment('2013-12-01 08:03:00.000'), message: 'That can be fixed!', sender: 'Barney'}]}
+{id: 3, resolved: false,  course: 'AN01', subject: 'This Sucks', thread: [{date: moment('2014-02-08 24:00:00.000'), message: "I can't understand a single word!", sender: 'Jane Doe', seen: true}]},
+{id: 4,  resolved: true, course: 'CS04', subject: 'I need less grades', thread: [{date: moment('2012-02-08 24:00:00.000'), message: "I have waaaay too many grades", sender: 'Jane Doe', seen: true}, {date: moment('2013-12-01 08:03:00.000'), message: 'That can be fixed!', sender: 'Barney', seen: false}]}
 
 ]
 
