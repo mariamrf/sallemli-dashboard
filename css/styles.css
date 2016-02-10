@@ -202,7 +202,7 @@ ul li a{
 	-webkit-transform: skewX(-20deg);
 }
 
-#your-courses h3, #find-course h1, #submitted-title h3, .course-property-messages, #all-alerts-title h1{
+#your-courses h3, #find-course h1, #submitted-title h3, .course-property-messages, #all-alerts-title h1, .complaints-header h2{
 	background-color: #409C97;
 	padding:0.3em;
 	transform: skewX(-20deg);
@@ -404,15 +404,14 @@ ul li a{
 	}
 	.message-all{
 		padding-right: 0;
+		padding-left: 0;
+		padding-right: 0.5em;
 	}
 
 	.message-content .col-xs-12{
 		padding-right: 0.5em;
 	}
-	.message-all{
-		padding-left: 0;
-		padding-right: 0.5em;
-	}
+	
 	#all-messages-details{
 		padding-right: 0;
 		padding-top: 1em;
@@ -546,12 +545,18 @@ ul li a{
 }
 
 
-.one-message h4{
+.one-message h4, .one-complaint h4{
 	display: inline;
 	font-weight: bold;
 }
+.one-complaint{
+	margin-bottom: 1em;
+}
 
-.message-all hr{
+.complaint-resolve{
+	color: #42787A;
+}
+.message-all hr, .complaint-all hr{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 0;
@@ -559,6 +564,9 @@ ul li a{
 	padding: 0;
 	width:107%;
 	border-bottom: 0.1em solid rgba(0,0,0,0.2);
+}
+.complaint-all hr{
+	width:100%;
 }
 
 .rev-message{
@@ -607,7 +615,31 @@ ul li a{
 	transition: color 0.5s;
 	-webkit-transition: color 0.5s;
 }
+.links-heading{
 
+	padding-bottom: .5em;
+}
+
+.links-heading hr{
+	margin: 0;
+	border-color: rgba(0,0,0,0.2);
+	width: 98%;
+}
+.all-things-heading, .all-things-heading a{
+	margin-bottom: .5em;
+	color:black;
+	text-transform: uppercase;
+	font-size: .95em;
+	opacity: 0.7;
+	font-weight: bold;
+	transition: opacity 0.5s;
+	-webkit-transition: opacity 0.5s;
+}
+
+.all-things-heading a:hover{
+	text-decoration: none;
+	opacity:1;
+}
 @media(max-width: 991px){
 	.one-message{
 		padding-right:2em;

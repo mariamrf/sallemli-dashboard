@@ -48,6 +48,12 @@ var allMessages = [
 
 ]
 
+var allComplaints = [
+{id: 3, seen: false, resolved: false,  course: 'AN01', subject: 'This Sucks', thread: [{date: moment('2014-02-08 24:00:00.000'), message: "I can't understand a single word!", sender: 'Jane Doe'}]},
+{id: 4, seen: true, resolved: true, course: 'CS04', subject: 'I need less grades', thread: [{date: moment('2012-02-08 24:00:00.000'), message: "I have waaaay too many grades", sender: 'Jane Doe'}, {date: moment('2013-12-01 08:03:00.000'), message: 'That can be fixed!', sender: 'Barney'}]}
+
+]
+
 var allRequests = [
 {id: 1, course: {id: 'IS02', name: 'Database Systems'}, requester: {email: 'moseby@mr.me', name: 'Mr. Moseby'}, date: moment('2016-01-08 24:00:00.000')},
 {id: 2, course: {id: 'ME02', name: 'Fifth Course Added'}, requester: {email: 'anakin@lightside.me', name: 'Anakin Skywalker'}, date: moment('2015-12-08 24:00:00.000')}
@@ -69,6 +75,18 @@ function populateAlerts(){
 		if(allMessages[i].thread[j].date>lastSeen) novel = true; //assumes all messages in allMessages are for the logged in user and doesn't account for said user's replies (replies would still notify using this function, but again this is a mock db and not the actual backend)
 		else novel = false;
 		alerts.push({type: 'M', link: 'course?'+allMessages[i].course, date: allMessages[i].thread[j].date, text: allMessages[i].thread[j].sender + ' sent a message regarding ' + allMessages[i].course, isNew: novel});
+		}
+	}
+
+	for(var i=0; i<allComplaints.length; i++){
+		for(var j=0; j<allComplaints[i].thread.length; j++){
+			if(allComplaints[i].thread[j].sender.toLowerCase() == 'Jane Doe'.toLowerCase()) continue; //this shouldn't be done with names but done with unique ids but who am I to tell the almighty mock database what to do
+			else{
+			var novel;
+			if(allComplaints[i].thread[j].date>lastSeen) novel = true;
+			else novel = false; 
+			alerts.push({type: 'C', link: 'complaints', date: allComplaints[i].thread[j].date, text: allComplaints[i].thread[j].sender + ' replied to your complaint regarding ' + allComplaints[i].course, isNew: novel});
+			}
 		}
 	}
 

@@ -11,8 +11,7 @@ var coursevm = new Vue({
 	el: '#course-details',
 	data: {
 		all_courses: myCourses, //until we add more not-my-courses
-		filtered: false,
-		reply: ""
+		filtered: false
 	},
 	computed: {
 		courseIndex: function(){
