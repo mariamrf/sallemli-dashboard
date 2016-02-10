@@ -55,7 +55,7 @@ var coursevm = new Vue({
 });
 
 function linkifyMessages(){
-	$('.one-message').linkify({
+	$('.one-complaint').linkify({
 	target: "_blank"
 });
 }
